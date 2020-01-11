@@ -1,0 +1,24 @@
+name: Java CI
+
+on: 
+  release:
+    types: [published]
+  
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout  
+      uses: actions/checkout@v2
+    - name: Set up JDK 13
+      uses: actions/setup-java@v1
+      with:
+        java-version: 13
+    - name: Release to Maven Central
+      run: ./gradlew release
+      env:
+        ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.PACKAGE_SIGNING_KEY_ID }}
+        ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
+        ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
+        ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
+        ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrtes.OSSRH_PASSWORD }}
