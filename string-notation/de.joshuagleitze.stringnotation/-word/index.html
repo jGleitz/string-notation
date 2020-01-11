@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Word - string-notation</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">string-notation</a>&nbsp;/&nbsp;<a href="../index.html">de.joshuagleitze.stringnotation</a>&nbsp;/&nbsp;<a href="./index.html">Word</a><br/>
+<br/>
+<h1>Word</h1>
+<code><span class="keyword">class </span><span class="identifier">Word</span></code>
+<p>A notation-agnostic representation of a string. This is a “word” in the sense of “word over the Unicode alphabet”, not in the sense of a
+word in any spoken language. A <code>Word</code> consists of <a href="parts.html">parts</a>.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<code><span class="identifier">Word</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="de.joshuagleitze.stringnotation.Word$<init>(kotlin.Array((kotlin.String)))/parts">parts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">Word</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$<init>(kotlin.collections.List((kotlin.String)))/parts">parts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>A notation-agnostic representation of a string. This is a “word” in the sense of “word over the Unicode alphabet”, not in the sense of a
+word in any spoken language. A <code>Word</code> consists of <a href="parts.html">parts</a>.</p>
+<code><span class="identifier">Word</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$<init>(kotlin.sequences.Sequence((kotlin.String)))/parts">parts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html"><span class="identifier">Sequence</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="parts.html">parts</a></h4>
+</td>
+<td>
+<p>The different parts this word consists of. A <a href="../-string-notation/index.html">StringNotation</a> will <a href="../-string-notation/parse.html">parse</a> a given input into its
+<a href="parts.html">parts</a> and <a href="../-string-notation/print.html">print</a> a <code>Word</code> by combining its <a href="parts.html">parts</a> appropriately.</p>
+<code><span class="keyword">val </span><span class="identifier">parts</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html"><span class="identifier">Sequence</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="parts-list.html">partsList</a></h4>
+</td>
+<td>
+<p>Gives the <a href="parts.html">parts</a> as a <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>.</p>
+<code><span class="keyword">val </span><span class="identifier">partsList</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="plus.html">plus</a></h4>
+</td>
+<td>
+<p>Appends a part to this word.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$plus(kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Word</span></a></code>
+<p>Appends all parts of the given <a href="plus.html#de.joshuagleitze.stringnotation.Word$plus(de.joshuagleitze.stringnotation.Word)/word">word</a> to this word.</p>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><span class="identifier">plus</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$plus(de.joshuagleitze.stringnotation.Word)/word">word</span><span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">Word</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Word</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="to-notation.html">toNotation</a></h4>
+</td>
+<td>
+<p>Converts this word into a string according to the given <a href="to-notation.html#de.joshuagleitze.stringnotation.Word$toNotation(de.joshuagleitze.stringnotation.StringNotation)/notation">notation</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">toNotation</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$toNotation(de.joshuagleitze.stringnotation.StringNotation)/notation">notation</span><span class="symbol">:</span>&nbsp;<a href="../-string-notation/index.html"><span class="identifier">StringNotation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

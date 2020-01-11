@@ -1,0 +1,4 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:de.joshuagleitze.stringnotation$inNotation(kotlin.String, de.joshuagleitze.stringnotation.StringNotation)de.joshuagleitze.stringnotation/kotlin.-string/in-notation.html
+de.joshuagleitze.stringnotation

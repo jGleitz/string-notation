@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StringNotation - string-notation</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">string-notation</a>&nbsp;/&nbsp;<a href="../index.html">de.joshuagleitze.stringnotation</a>&nbsp;/&nbsp;<a href="./index.html">StringNotation</a><br/>
+<br/>
+<h1>StringNotation</h1>
+<code><span class="keyword">interface </span><span class="identifier">StringNotation</span></code>
+<p>A convention for representing <a href="../-word/index.html">Words</a>.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="parse.html">parse</a></h4>
+</td>
+<td>
+<p>Transforms an input string that is in <code>this</code> notation into a notation-agnostic <a href="../-word/index.html">Word</a>.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">parse</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.StringNotation$parse(kotlin.String)/sourceString">sourceString</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-word/index.html"><span class="identifier">Word</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="print.html">print</a></h4>
+</td>
+<td>
+<p>Transforms a <a href="../-word/index.html">Word</a> into a string that is formatted according to <code>this</code> notation.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">print</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.StringNotation$print(de.joshuagleitze.stringnotation.Word)/word">word</span><span class="symbol">:</span>&nbsp;<a href="../-word/index.html"><span class="identifier">Word</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="../-base-string-notation/index.html">BaseStringNotation</a></h4>
+</td>
+<td>
+<p>Base class for implementing string notations.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseStringNotation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">StringNotation</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>de.joshuagleitze.stringnotation - string-notation</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">string-notation</a>&nbsp;/&nbsp;<a href="./index.html">de.joshuagleitze.stringnotation</a><br/>
+<br/>
+<h2>Package de.joshuagleitze.stringnotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-base-string-notation/index.html">BaseStringNotation</a></h4>
+</td>
+<td>
+<p>Base class for implementing string notations.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseStringNotation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-string-notation/index.html"><span class="identifier">StringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-java-member-name/index.html">JavaMemberName</a></h4>
+</td>
+<td>
+<p>A notation for java member names. This notation is like <a href="-lower-camel-case/index.html">LowerCamelCase</a>, but will drop any character that is not allowed in a Java
+identifier when <a href="-string-notation/print.html">printing</a>.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaMemberName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-java-type-name/index.html">JavaTypeName</a></h4>
+</td>
+<td>
+<p>A notation for java type names. This notation is like <a href="-upper-camel-case/index.html">UpperCamelCase</a>, but will drop any character that is not allowed in a Java
+identifier when <a href="-string-notation/print.html">printing</a>.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaTypeName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-lower-camel-case/index.html">LowerCamelCase</a></h4>
+</td>
+<td>
+<p>The <code>lowerCamelCase</code> notation.</p>
+<code><span class="keyword">object </span><span class="identifier">LowerCamelCase</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-normal-words/index.html">NormalWords</a></h4>
+</td>
+<td>
+<p>Notation for words written like in normal language. <a href="-string-notation/parse.html">Parsing</a> will recognise all substrings that are separated by
+one or more characters of whitespace as a <a href="-word/parts.html">part</a>. <a href="-string-notation/print.html">Printing</a> will print the parts separated by one
+space.</p>
+<code><span class="keyword">object </span><span class="identifier">NormalWords</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-screaming-snake-case/index.html">ScreamingSnakeCase</a></h4>
+</td>
+<td>
+<p>The <code>SCREAMING_SNAKE_CASE</code> notation.</p>
+<code><span class="keyword">object </span><span class="identifier">ScreamingSnakeCase</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-snake-case/index.html">SnakeCase</a></h4>
+</td>
+<td>
+<p>The <code>snake_case</code> notation.</p>
+<code><span class="keyword">object </span><span class="identifier">SnakeCase</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-string-notation/index.html">StringNotation</a></h4>
+</td>
+<td>
+<p>A convention for representing <a href="-word/index.html">Words</a>.</p>
+<code><span class="keyword">interface </span><span class="identifier">StringNotation</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-upper-camel-case/index.html">UpperCamelCase</a></h4>
+</td>
+<td>
+<p>The <code>UpperCamelCase</code> notation.</p>
+<code><span class="keyword">object </span><span class="identifier">UpperCamelCase</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-word/index.html">Word</a></h4>
+</td>
+<td>
+<p>A notation-agnostic representation of a string. This is a “word” in the sense of “word over the Unicode alphabet”, not in the sense of a
+word in any spoken language. A <code>Word</code> consists of <a href="-word/parts.html">parts</a>.</p>
+<code><span class="keyword">class </span><span class="identifier">Word</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Extensions for External Classes</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="kotlin.-string/index.html">kotlin.String</a></h4>
+</td>
+<td>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
