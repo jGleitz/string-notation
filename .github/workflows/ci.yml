@@ -11,10 +11,29 @@ jobs:
         java-version: [8, 13]
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Set up JDK ${{ matrix.java-version }}
       uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java-version }}
     - name: Build with Gradle
       run: ./gradlew build
+
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 13
+      - name: Generate Documentation
+        run: ./gradlew dokka
+      - name: Publish Documentation
+        uses: peaceiris/actions-gh-pages@v2.9.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./build/dokka
