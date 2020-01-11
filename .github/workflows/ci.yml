@@ -61,11 +61,12 @@ jobs:
           ACTIONS_DEPLOY_KEY: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: ./build/dokka
+        with:
+          emptyCommits: false
       - name: Publish Snapshot JAR
         run: ./gradlew publish
         env:
           ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
           ORG_GRADLE_PROJECT_githubToken: ${{ github.token }}
-          ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.PACKAGE_SIGNING_KEY_ID }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
