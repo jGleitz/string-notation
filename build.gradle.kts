@@ -28,6 +28,12 @@ dependencies {
 	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.5.1")
 }
 
+val ossrhUsername: String? by project
+val ossrhPassword: String? by project
+val githubRepository: String? by project
+val githubOwner = githubRepository?.split("/")?.get(0)
+val githubToken: String? by project
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
@@ -47,7 +53,11 @@ val sourcesJar by tasks.creating(Jar::class) {
 
 val dokka by tasks.getting(DokkaTask::class) {
 	configuration {
-		includeNonPublic = false
+		sourceLink {
+			path = "./"
+			url = "https://github.com/$githubRepository/blob/master"
+			lineSuffix = "#L"
+		}
 	}
 }
 
@@ -62,12 +72,6 @@ artifacts {
 	archives(sourcesJar)
 	archives(dokkaJar)
 }
-
-val ossrhUsername: String? by project
-val ossrhPassword: String? by project
-val githubRepository: String? by project
-val githubOwner = githubRepository?.split("/")?.get(0)
-val githubToken: String? by project
 
 lateinit var publication: MavenPublication
 
@@ -114,7 +118,13 @@ publishing {
 	}
 	repositories {
 		if (project.isSnapshot) {
-			maven("https://maven.pkg.github.com/$githubOwner/REPOSITORY")
+			maven("https://maven.pkg.github.com/$githubRepository") {
+				name = "GitHub-Packages"
+				credentials {
+					username = githubOwner
+					password = githubToken
+				}
+			}
 		} else {
 			maven("https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
 				name = "OSSRH-Staging"
