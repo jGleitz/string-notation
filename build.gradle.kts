@@ -1,3 +1,4 @@
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -44,7 +45,11 @@ val sourcesJar by tasks.creating(Jar::class) {
 	from(sourceSets.main.get().allSource)
 }
 
-val dokka by tasks
+val dokka by tasks.getting(DokkaTask::class) {
+	configuration {
+		includeNonPublic = false
+	}
+}
 
 val dokkaJar by tasks.creating(Jar::class) {
 	group = "build"

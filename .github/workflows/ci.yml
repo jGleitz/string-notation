@@ -3,22 +3,32 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+
   build:
     name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
         java-version: [8, 13]
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set up JDK ${{ matrix.java-version }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ matrix.java-version }}
-    - name: Build with Gradle
-      run: ./gradlew build
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            gradle-${{ runner.os }}
+            gradle-
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Prepare
+        run: ./gradlew clean dependencies
+      - name: Build
+        run: ./gradlew build
 
   docs:
     name: Documentation
@@ -27,10 +37,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            gradle-${{ runner.os }}
+            gradle-
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 13
+      - name: Prepare
+        run: ./gradlew clean dependencies
       - name: Generate Documentation
         run: ./gradlew dokka
       - name: Publish Documentation
