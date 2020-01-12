@@ -1,4 +1,5 @@
 $dokka.format:html
 $dokka.linkExtension:html
-$dokka.location:de.joshuagleitze.stringnotation$inNotation(kotlin.String, de.joshuagleitze.stringnotation.StringNotation)de.joshuagleitze.stringnotation/kotlin.-string/in-notation.html
+$dokka.location:de.joshuagleitze.stringnotation$fromNotation(kotlin.String, de.joshuagleitze.stringnotation.StringNotation)de.joshuagleitze.stringnotation/kotlin.-string/from-notation.html
+$dokka.location:de.joshuagleitze.stringnotation$keepOnlyJavaIdentifierChars(kotlin.String)de.joshuagleitze.stringnotation/kotlin.-string/keep-only-java-identifier-chars.html
 de.joshuagleitze.stringnotation
