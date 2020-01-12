@@ -1,3 +1,5 @@
+@file:JvmName("StringToWord")
+
 package de.joshuagleitze.stringnotation
 
 /**
@@ -30,10 +32,12 @@ class Word(val parts: Sequence<String>) {
 	 * Appends all parts of the given [word] to this word.
 	 */
 	operator fun plus(word: Word) = Word(parts + word.parts)
+
+	override fun toString() = "Word(${parts.joinToString { "\"$it\"" }})"
 }
 
 /**
  * Converts `this` string, into a [Word] according to the provided [notation]. This method expects that the input is formatted according to
  * the [notation] and creates a notation-agnostic representation of it.
  */
-fun String.inNotation(notation: StringNotation): Word = notation.parse(this)
+fun String.fromNotation(notation: StringNotation): Word = notation.parse(this)
