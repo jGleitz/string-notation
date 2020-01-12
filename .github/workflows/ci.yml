@@ -48,7 +48,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 13
+          java-version: 8
       - name: Prepare
         run: ./gradlew clean dependencies
       - name: Assemble
@@ -63,10 +63,10 @@ jobs:
           PUBLISH_DIR: ./build/dokka
         with:
           emptyCommits: false
-      - name: Publish Snapshot JAR
-        run: ./gradlew publish
+      - name: Publish Snapshot Artifacts
+        run: ./gradlew publishSnapshot
         env:
-          ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
-          ORG_GRADLE_PROJECT_githubToken: ${{ github.token }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
+          ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
+          ORG_GRADLE_PROJECT_githubToken: ${{ github.token }}

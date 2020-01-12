@@ -1,17 +1,21 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import de.marcphilipp.gradle.nexus.NexusRepository
 
 plugins {
 	kotlin("jvm").version("1.3.61")
 	id("org.jetbrains.dokka") version "0.10.0"
 	`maven-publish`
 	signing
+	id("de.marcphilipp.nexus-publish") version "0.4.0"
 	id("io.codearte.nexus-staging") version "0.21.2"
+	id("com.palantir.git-version") version "0.12.2"
 	idea
 }
 
 group = "de.joshuagleitze"
-version = project.findProperty("releaseVersion") ?: "SNAPSHOT"
+version = if (isSnapshot) versionDetails.gitHash else versionDetails.lastTag.drop("v")
+status = if (isSnapshot) "snapshot" else "release"
 
 repositories {
 	jcenter()
@@ -74,6 +78,8 @@ artifacts {
 }
 
 lateinit var publication: MavenPublication
+lateinit var snapshotRepository: ArtifactRepository
+lateinit var releaseRepository: NexusRepository
 
 publishing {
 	publications {
@@ -117,22 +123,21 @@ publishing {
 		}
 	}
 	repositories {
-		if (project.isSnapshot) {
-			maven("https://maven.pkg.github.com/$githubRepository") {
-				name = "GitHub-Packages"
-				credentials {
-					username = githubOwner
-					password = githubToken
-				}
+		snapshotRepository = maven("https://maven.pkg.github.com/$githubRepository") {
+			name = "GitHubPackages"
+			credentials {
+				username = githubOwner
+				password = githubToken
 			}
-		} else {
-			maven("https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-				name = "OSSRH-Staging"
-				credentials {
-					username = ossrhUsername
-					password = ossrhPassword
-				}
-			}
+		}
+	}
+}
+
+nexusPublishing {
+	repositories {
+		releaseRepository = sonatype {
+			username.set(ossrhUsername)
+			password.set(ossrhPassword)
 		}
 	}
 }
@@ -149,15 +154,21 @@ nexusStaging {
 	password = ossrhPassword
 }
 
-val closeAndPromoteRepository by project.tasks
+val closeAndReleaseRepository by project.tasks
 val publish by tasks
+
+task("publishSnapshot") {
+	group = "publishing"
+	description = "Publishes a snapshot of the project to GitHub Packages"
+	dependsOn(snapshotRepository.publishTask)
+}
 
 task("release") {
 	group = "release"
-	description = "Publishes the project to Maven Central"
-	dependsOn(publish)
-	dependsOn(closeAndPromoteRepository)
-	closeAndPromoteRepository.mustRunAfter(publish)
+	description = "Releases the project to Maven Central"
+	dependsOn(releaseRepository.publishTask)
+	dependsOn(closeAndReleaseRepository)
+	closeAndReleaseRepository.mustRunAfter(releaseRepository.publishTask)
 }
 
 idea {
@@ -167,4 +178,13 @@ idea {
 	}
 }
 
-val Project.isSnapshot get() = this.version == "SNAPSHOT"
+val Project.isSnapshot get() = versionDetails.commitDistance != 0
+
+fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.length) else this
+
+val Project.versionDetails
+	get() = (this.extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
+
+
+val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
+val NexusRepository.publishTask get() = tasks["publishTo${this.name.capitalize()}"]

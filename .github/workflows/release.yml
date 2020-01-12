@@ -1,4 +1,4 @@
-name: Java CI
+name: Release
 
 on:
   release:
@@ -18,10 +18,10 @@ jobs:
           restore-keys: |
             gradle-${{ runner.os }}
             gradle-
-      - name: Set up JDK 13
+      - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 13
+          java-version: 8
       - name: Prepare
         run: ./gradlew clean dependencies
       - name: Release to Maven Central
@@ -29,5 +29,6 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
+          ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
           ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
-          ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrtes.OSSRH_PASSWORD }}
+          ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
