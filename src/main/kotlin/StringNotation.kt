@@ -1,10 +1,5 @@
 package de.joshuagleitze.stringnotation
 
-import java.lang.Character.isJavaIdentifierPart
-import java.lang.Character.isJavaIdentifierStart
-import java.util.*
-import java.util.stream.IntStream
-
 /**
  * A convention for representing [Words][Word].
  */
