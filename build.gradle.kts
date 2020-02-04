@@ -4,7 +4,7 @@ import de.marcphilipp.gradle.nexus.NexusRepository
 
 plugins {
 	kotlin("jvm").version("1.3.61")
-	id("org.jetbrains.dokka") version "0.10.0"
+	id("org.jetbrains.dokka") version "0.10.1"
 	`maven-publish`
 	signing
 	id("de.marcphilipp.nexus-publish") version "0.4.0"
