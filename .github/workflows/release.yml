@@ -6,6 +6,7 @@ on:
 
 jobs:
   publish:
+    name: Publish Artefacts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,7 +22,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
-          java-version: 8
+          java-version: 13
       - name: Prepare
         run: ./gradlew clean dependencies
       - name: Release to Maven Central
@@ -32,3 +33,36 @@ jobs:
           ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
           ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
           ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
+
+  docs:
+    name: Publish Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            gradle-${{ runner.os }}
+            gradle-
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 13
+      - name: Prepare
+        run: ./gradlew clean dependencies
+      - name: Assemble
+        run: ./gradlew dokka
+        env:
+          ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
+      - name: Publish Documentation
+        uses: peaceiris/actions-gh-pages@v3.0.3
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./build/dokka
+        with:
+          emptyCommits: false
