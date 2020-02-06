@@ -1,6 +1,6 @@
+import de.marcphilipp.gradle.nexus.NexusRepository
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import de.marcphilipp.gradle.nexus.NexusRepository
 
 plugins {
 	kotlin("jvm").version("1.3.61")

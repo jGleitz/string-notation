@@ -9,8 +9,9 @@ class JavaTypeNameTest: BaseNotationTest(
 		Word("removes", "upperCase") to "RemovesUppercase",
 		Word("") to "__",
 		Word("1") to "__",
-		Word("8if") to "if_",
-		Word("_") to "__"
+		Word("8if") to "If",
+		Word("enum") to "Enum",
+		Word("_") to "__" ifJvmVersionIsAtLeast 9
 	)
 )
 
@@ -27,7 +28,8 @@ class JavaMemberNameTest: BaseNotationTest(
 		Word("") to "__",
 		Word("1") to "__",
 		Word("8if") to "if_",
-		Word("_") to "__"
+		Word("enum") to "enum_",
+		Word("_") to "__" ifJvmVersionIsAtLeast 9
 	)
 )
 
@@ -46,7 +48,8 @@ class JavaPackagePartTest: BaseNotationTest(
 		Word("") to "__",
 		Word("1") to "__",
 		Word("8if") to "if_",
-		Word("_") to "__"
+		Word("enum") to "enum_",
+		Word("_") to "__" ifJvmVersionIsAtLeast 9
 	)
 )
 
@@ -58,8 +61,9 @@ class JavaPackageNameTest: BaseNotationTest(
 		"if.true" to Word("if", "true")
 	),
 	printOnlyWords = listOf(
+		Word("enum") to "enum_",
 		Word("if", "", "cApitAls") to "if_.__.capitals",
-		Word("_") to "__"
+		Word("_") to "__" ifJvmVersionIsAtLeast 9
 	)
 
 )
@@ -76,6 +80,7 @@ class JavaConstantNameTest: BaseNotationTest(
 		Word("") to "__",
 		Word("1") to "__",
 		Word("8if") to "IF",
-		Word("_") to "__"
+		Word("enum") to "enum_",
+		Word("_") to "__" ifJvmVersionIsAtLeast 9
 	)
 )
