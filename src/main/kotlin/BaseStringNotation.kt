@@ -1,7 +1,5 @@
 package de.joshuagleitze.stringnotation
 
-import java.util.*
-
 /**
  * Base class for implementing string notations.
  *
@@ -9,12 +7,12 @@ import java.util.*
  */
 abstract class BaseStringNotation(private val splitAt: Regex): StringNotation {
 	/**
-	 * Transforms a parsed part after it has been read. The default implementation is to convert the part to lowercase to discard possibly
-	 * wrong case information.
+	 * Transforms a parsed part after it has been read. The default implementation does not change the part.
 	 */
-	protected open fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
+	protected open fun transformPartAfterParse(index: Int, part: String) = part
 
-	override fun parse(sourceString: String): Word = Word(sourceString.split(splitAt).asSequence().mapIndexed(::transformPartAfterParse))
+	override fun parse(sourceString: String): Word =
+		Word(sourceString.split(splitAt).asSequence().filter(String::isNotBlank).mapIndexed(::transformPartAfterParse))
 
 	/**
 	 * Allows to transform a part before it is being printed. The default implementation does not modify the part in any way.
@@ -34,7 +32,7 @@ abstract class BaseStringNotation(private val splitAt: Regex): StringNotation {
 
 	override fun print(word: Word) = word.parts
 		.mapIndexed(::transformPartToPrint)
-		.foldIndexed(StringBuffer()) { index, left, right -> left.append(printBeforePart(index, right)).append(right) }
+		.foldIndexed(StringBuffer()) { index, existing, part -> existing.append(printBeforePart(index, part)).append(part) }
 		.toString()
 
 	override fun toString() = this::class.java.simpleName!!
