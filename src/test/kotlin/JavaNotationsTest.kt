@@ -6,6 +6,7 @@ class JavaTypeNameTest: BaseNotationTest(
 	printOnlyWords = listOf(
 		Word("I’m using", "Bad", "chaRacters!") to "ImusingBadCharacters",
 		Word("1", "type", "name", "4", "you") to "TypeName4You",
+		Word("handles", "§eight", "correctly") to "HandlesEightCorrectly",
 		Word("removes", "upperCase") to "RemovesUppercase",
 		Word("") to "__",
 		Word("1") to "__",
@@ -21,6 +22,7 @@ class JavaMemberNameTest: BaseNotationTest(
 	printOnlyWords = listOf(
 		Word("I’m using", "Bad", "chaRacters!") to "imusingBadCharacters",
 		Word("1", "Member", "name", "4", "you") to "memberName4You",
+		Word("handles", "§eight", "correctly") to "handlesEightCorrectly",
 		Word("_", "underscore", "start") to "_underscoreStart",
 		Word("$", "dollar", "start") to "\$dollarStart",
 		Word("a", "letter", "start") to "aLetterStart",
@@ -80,7 +82,7 @@ class JavaConstantNameTest: BaseNotationTest(
 		Word("") to "__",
 		Word("1") to "__",
 		Word("8if") to "IF",
-		Word("enum") to "enum_",
+		Word("enum") to "ENUM",
 		Word("_") to "__" ifJvmVersionIsAtLeast 9
 	)
 )

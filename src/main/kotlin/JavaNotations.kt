@@ -12,7 +12,13 @@ import javax.lang.model.SourceVersion
  * using [SourceVersion.isKeyword].
  */
 object JavaTypeName: StringNotation by UpperCamelCase {
-	override fun print(word: Word) = UpperCamelCase.print(word).makeValidJavaIdentifier()
+	override fun print(word: Word) = UpperCamelCase.print(
+		Word(word.parts.mapIndexed { index, wordPart ->
+			if (index == 0) wordPart.keepOnlyJavaIdentifierChars()
+			else wordPart.keepOnlyJavaIdentifierContinuationChars()
+		})
+	)
+		.neutralizeJavaReservedKeywords()
 
 	override fun toString() = this::class.java.simpleName!!
 }
@@ -28,11 +34,14 @@ object JavaMemberName: BaseStringNotation(camelCaseSplitRegex) {
 	override fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
 
 	override fun print(word: Word) = word.parts
-		.foldIndexed(StringBuffer()) { index, left, right ->
-			val rightPart =
-				if (left.contains(Regex("[a-zA-Z]"))) right.toFirstUpperOtherLowerCase()
-				else right.toLowerCase()
-			left.append(printBeforePart(index, rightPart)).append(rightPart)
+		.foldIndexed(StringBuffer()) { index, existing, part ->
+			val filteredPart =
+				if (index == 0) part.keepOnlyJavaIdentifierChars()
+				else part.keepOnlyJavaIdentifierContinuationChars()
+			val nextPart =
+				if (existing.contains(Regex("[a-zA-Z]"))) filteredPart.toFirstUpperOtherLowerCase()
+				else filteredPart.toLowerCase()
+			existing.append(printBeforePart(index, nextPart)).append(nextPart)
 		}.toString().makeValidJavaIdentifier()
 }
 
@@ -79,15 +88,24 @@ object JavaConstantName: StringNotation by ScreamingSnakeCase {
 	override fun toString() = this::class.java.simpleName!!
 }
 
-private fun String.makeValidJavaIdentifier() = this.keepOnlyJavaIdentifierChars().neutralizeJavaReservedKeywords().ifEmpty { "__" }
+private fun String.makeValidJavaIdentifier() = this.keepOnlyJavaIdentifierChars().neutralizeJavaReservedKeywords()
 
 private fun String.keepOnlyJavaIdentifierChars() = this.chars()
 	.skipWhile { !Character.isJavaIdentifierStart(it) }
-	.filter { Character.isJavaIdentifierPart(it) }
-	.collect({ StringBuilder() }, { left, right -> left.appendCodePoint(right) }, { left, right -> left.append(right) })
-	.toString()
+	.keepOnlyJavaIdentifierContinuationChars()
+	.collectToString()
 
-private fun String.neutralizeJavaReservedKeywords() = if (SourceVersion.isKeyword(this)) this + "_" else this
+private fun String.keepOnlyJavaIdentifierContinuationChars() = this.chars().keepOnlyJavaIdentifierContinuationChars().collectToString()
+private fun IntStream.keepOnlyJavaIdentifierContinuationChars() = this.filter { Character.isJavaIdentifierPart(it) }
+private fun IntStream.collectToString() =
+	this.collect({ StringBuilder() }, { left, right -> left.appendCodePoint(right) }, { left, right -> left.append(right) })
+		.toString()
+
+private fun String.neutralizeJavaReservedKeywords() = when {
+	this == "" -> "__"
+	SourceVersion.isKeyword(this) -> this + "_"
+	else -> this
+}
 
 private inline fun IntStream.skipWhile(crossinline condition: (Int) -> Boolean): IntStream {
 	var found = false
