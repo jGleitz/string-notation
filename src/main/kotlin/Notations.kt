@@ -1,8 +1,8 @@
 package de.joshuagleitze.stringnotation
 
-import java.util.stream.IntStream
+import java.util.*
 
-private val camelCaseSplitRegex = Regex("(?<=.)(?=\\p{Lu})")
+internal val camelCaseSplitRegex = Regex("(?<=.)(?=\\p{Lu})")
 
 /**
  * The `UpperCamelCase` notation.
@@ -10,6 +10,8 @@ private val camelCaseSplitRegex = Regex("(?<=.)(?=\\p{Lu})")
  * @see JavaTypeName
  */
 object UpperCamelCase: BaseStringNotation(camelCaseSplitRegex) {
+	override fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
+
 	public override fun transformPartToPrint(index: Int, part: String) = part.toFirstUpperOtherLowerCase()
 }
 
@@ -19,6 +21,8 @@ object UpperCamelCase: BaseStringNotation(camelCaseSplitRegex) {
  * @see JavaMemberName
  */
 object LowerCamelCase: BaseStringNotation(camelCaseSplitRegex) {
+	override fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
+
 	override fun transformPartToPrint(index: Int, part: String) = if (index == 0) part.toLowerCase() else part.toFirstUpperOtherLowerCase()
 }
 
@@ -26,6 +30,8 @@ object LowerCamelCase: BaseStringNotation(camelCaseSplitRegex) {
  * The `SCREAMING_SNAKE_CASE` notation.
  */
 object ScreamingSnakeCase: BaseStringNotation(Regex("_")) {
+	override fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
+
 	override fun printBeforeInnerPart(index: Int, part: String) = "_"
 
 	override fun transformPartToPrint(index: Int, part: String) = part.toUpperCase()
@@ -35,36 +41,7 @@ object ScreamingSnakeCase: BaseStringNotation(Regex("_")) {
  * The `snake_case` notation.
  */
 object SnakeCase: BaseStringNotation(Regex("_")) {
-	override fun transformPartAfterParse(index: Int, part: String) = part
 	override fun printBeforeInnerPart(index: Int, part: String) = "_"
-}
-
-/**
- * A notation for java type names. This notation is like [UpperCamelCase], but will drop any character that is not allowed in a Java
- * identifier when [printing][StringNotation.print].
- *
- * Allowed characters are determined using [Character.isJavaIdentifierStart] and [Character.isJavaIdentifierPart].
- */
-object JavaTypeName: BaseStringNotation(camelCaseSplitRegex) {
-	override fun transformPartToPrint(index: Int, part: String) = part.toFirstUpperOtherLowerCase()
-	override fun print(word: Word) = super.print(word).keepOnlyJavaIdentifierChars()
-}
-
-/**
- * A notation for java member names. This notation is like [LowerCamelCase], but will drop any character that is not allowed in a Java
- * identifier when [printing][StringNotation.print].
- *
- * Allowed characters are determined using [Character.isJavaIdentifierStart] and [Character.isJavaIdentifierPart].
- */
-object JavaMemberName: BaseStringNotation(camelCaseSplitRegex) {
-	override fun print(word: Word) = word.parts
-		.foldIndexed(StringBuffer()) { index, left, right ->
-			val rightPart =
-				if (left.contains(Regex("[a-zA-Z]"))) right.toFirstUpperOtherLowerCase()
-				else right.toLowerCase()
-			left.append(printBeforePart(index, rightPart)).append(rightPart)
-		}.toString().keepOnlyJavaIdentifierChars()
-
 }
 
 /**
@@ -73,25 +50,8 @@ object JavaMemberName: BaseStringNotation(camelCaseSplitRegex) {
  * space.
  */
 object NormalWords: BaseStringNotation(Regex("[\\s]+")) {
-	override fun transformPartAfterParse(index: Int, part: String) = part
 	override fun printBeforeInnerPart(index: Int, part: String) = " "
 }
 
 internal fun String.toFirstUpperOtherLowerCase() = if (isNotEmpty()) this[0].toUpperCase() + substring(1).toLowerCase() else this
-
-fun String.keepOnlyJavaIdentifierChars() = this.chars()
-	.skipWhile { !Character.isJavaIdentifierStart(it) }
-	.filter { Character.isJavaIdentifierPart(it) }
-	.collect({ StringBuilder() }, { left, right -> left.appendCodePoint(right) }, { left, right -> left.append(right) })
-	.toString()
-
-internal inline fun IntStream.skipWhile(crossinline condition: (Int) -> Boolean): IntStream {
-	var found = false
-	return this.filter {
-		if (!found) {
-			found = !condition(it)
-		}
-		found
-	}
-}
 
