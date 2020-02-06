@@ -78,7 +78,6 @@ artifacts {
 }
 
 lateinit var publication: MavenPublication
-lateinit var snapshotRepository: ArtifactRepository
 lateinit var releaseRepository: NexusRepository
 
 publishing {
@@ -92,14 +91,14 @@ publishing {
 				name.set(provider { "$groupId:$artifactId" })
 				description.set("Convert between different string notations commonly found in programming")
 				inceptionYear.set("2020")
-				url.set("https://github.com/jGleitz/string-notation")
+				url.set("https://github.com/$githubRepository")
 				ciManagement {
 					system.set("GitHub Actions")
-					url.set("https://github.com/jGleitz/string-notation/actions")
+					url.set("https://github.com/$githubRepository/actions")
 				}
 				issueManagement {
 					system.set("GitHub Issues")
-					url.set("https://github.com/jGleitz/string-notation/issues")
+					url.set("https://github.com/$githubRepository/issues")
 				}
 				developers {
 					developer {
@@ -108,9 +107,9 @@ publishing {
 					}
 				}
 				scm {
-					connection.set("scm:git:https://github.com/jGleitz/string-notation.git")
-					developerConnection.set("scm:git:git://git@github.com:jGleitz/string-notation.git")
-					url.set("https://github.com/jGleitz/string-notation")
+					connection.set("scm:git:https://github.com/$githubRepository.git")
+					developerConnection.set("scm:git:git://git@github.com:$githubRepository.git")
+					url.set("https://github.com/$githubRepository")
 				}
 				licenses {
 					license {
@@ -119,15 +118,6 @@ publishing {
 						distribution.set("repo")
 					}
 				}
-			}
-		}
-	}
-	repositories {
-		snapshotRepository = maven("https://maven.pkg.github.com/$githubRepository") {
-			name = "GitHubPackages"
-			credentials {
-				username = githubOwner
-				password = githubToken
 			}
 		}
 	}
@@ -155,20 +145,12 @@ nexusStaging {
 }
 
 val closeAndReleaseRepository by project.tasks
-val publish by tasks
-
-task("publishSnapshot") {
-	group = "publishing"
-	description = "Publishes a snapshot of the project to GitHub Packages"
-	dependsOn(snapshotRepository.publishTask)
-}
+closeAndReleaseRepository.mustRunAfter(releaseRepository.publishTask)
 
 task("release") {
 	group = "release"
 	description = "Releases the project to Maven Central"
-	dependsOn(releaseRepository.publishTask)
-	dependsOn(closeAndReleaseRepository)
-	closeAndReleaseRepository.mustRunAfter(releaseRepository.publishTask)
+	dependsOn(releaseRepository.publishTask, closeAndReleaseRepository)
 }
 
 idea {
@@ -185,6 +167,4 @@ fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.
 val Project.versionDetails
 	get() = (this.extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
 
-
-val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
 val NexusRepository.publishTask get() = tasks["publishTo${this.name.capitalize()}"]
