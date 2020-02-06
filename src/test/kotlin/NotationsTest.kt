@@ -1,9 +1,8 @@
 package de.joshuagleitze.stringnotation
 
-import ch.tutteli.atrium.api.cc.en_GB.property
-import ch.tutteli.atrium.api.cc.en_GB.returnValueOf
-import ch.tutteli.atrium.api.cc.en_GB.toBe
-import ch.tutteli.atrium.verbs.expect
+import ch.tutteli.atrium.api.fluent.en_GB.feature
+import ch.tutteli.atrium.api.fluent.en_GB.toBe
+import ch.tutteli.atrium.api.verbs.expect
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 import org.junit.jupiter.params.ParameterizedTest
@@ -21,7 +20,7 @@ abstract class BaseNotationTest(
 	@MethodSource("parseWords")
 	fun `parses words correctly`(input: String, expectedWord: Word) {
 		expect(input.fromNotation(notation)) {
-			property(Word::partsList).toBe(expectedWord.partsList)
+			feature(Word::partsList).toBe(expectedWord.partsList)
 		}
 	}
 
@@ -29,7 +28,7 @@ abstract class BaseNotationTest(
 	@MethodSource("printWords")
 	fun `prints words correctly`(sourceWord: Word, expectedResult: String) {
 		expect(sourceWord) {
-			returnValueOf(subject::toNotation, notation).toBe(expectedResult)
+			feature(Word::toNotation, notation).toBe(expectedResult)
 		}
 	}
 
@@ -37,8 +36,8 @@ abstract class BaseNotationTest(
 	@MethodSource("unchangedWords")
 	fun `parsing and printing a word written in this notation does not change the word`(word: String) {
 		expect(word) {
-			returnValueOf(subject::fromNotation, notation) {
-				returnValueOf(subject::toNotation, notation).toBe(word)
+			feature(String::fromNotation, notation) {
+				feature(Word::toNotation, notation).toBe(word)
 			}
 		}
 	}

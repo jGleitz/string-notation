@@ -1,28 +1,28 @@
 package de.joshuagleitze.stringnotation
 
-import ch.tutteli.atrium.api.cc.en_GB.asIterable
-import ch.tutteli.atrium.api.cc.en_GB.containsExactly
-import ch.tutteli.atrium.api.cc.en_GB.property
-import ch.tutteli.atrium.verbs.expect
+import ch.tutteli.atrium.api.fluent.en_GB.asIterable
+import ch.tutteli.atrium.api.fluent.en_GB.containsExactly
+import ch.tutteli.atrium.api.fluent.en_GB.feature
+import ch.tutteli.atrium.api.verbs.expect
 import org.junit.jupiter.api.Test
 
 class WordTest {
 	@Test
 	fun `exposes parts as list`() {
-		expect(Word("with", "parts")).property(Word::partsList).containsExactly("with", "parts")
-		expect(Word(listOf("with", "parts"))).property(Word::partsList).containsExactly("with", "parts")
-		expect(Word(sequenceOf("with", "parts"))).property(Word::partsList).containsExactly("with", "parts")
+		expect(Word("with", "parts")).feature(Word::partsList).containsExactly("with", "parts")
+		expect(Word(listOf("with", "parts"))).feature(Word::partsList).containsExactly("with", "parts")
+		expect(Word(sequenceOf("with", "parts"))).feature(Word::partsList).containsExactly("with", "parts")
 	}
 
 	@Test
 	fun `exposes parts as sequence`() {
-		expect(Word("with", "parts")).property(Word::parts).asIterable().containsExactly("with", "parts")
-		expect(Word(listOf("with", "parts"))).property(Word::parts).asIterable().containsExactly("with", "parts")
-		expect(Word(sequenceOf("with", "parts"))).property(Word::parts).asIterable().containsExactly("with", "parts")
+		expect(Word("with", "parts")).feature(Word::parts).asIterable().containsExactly("with", "parts")
+		expect(Word(listOf("with", "parts"))).feature(Word::parts).asIterable().containsExactly("with", "parts")
+		expect(Word(sequenceOf("with", "parts"))).feature(Word::parts).asIterable().containsExactly("with", "parts")
 	}
 
 	@Test
 	fun `allows to add parts`() {
-		expect((Word("with") + "more" + "parts")).property(Word::partsList).containsExactly("with", "more", "parts")
+		expect((Word("with") + "more" + "parts")).feature(Word::partsList).containsExactly("with", "more", "parts")
 	}
 }
