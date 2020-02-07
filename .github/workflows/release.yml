@@ -5,8 +5,8 @@ on:
     types: [published]
 
 jobs:
-  publish:
-    name: Publish Artefacts
+  release:
+    name: Release Artefacts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,13 +25,17 @@ jobs:
           java-version: 13
       - name: Prepare
         run: ./gradlew clean dependencies
-      - name: Release to Maven Central
+      - name: Assemble Artefacts
+        run: ./gradlew assemble
+        env:
+           ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
+      - name: Release Artefacts
         run: ./gradlew release
         env:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
           ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
-          ORG_GRADLE_PROJECT_githubToken: ${{ github.token }}
+          ORG_GRADLE_PROJECT_githubToken: ${{ secrets.RELEASE_GITHUB_TOKEN }}
           ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
           ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
 
@@ -55,7 +59,7 @@ jobs:
           java-version: 13
       - name: Prepare
         run: ./gradlew clean dependencies
-      - name: Assemble
+      - name: Generate Documentation
         run: ./gradlew dokka
         env:
           ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
