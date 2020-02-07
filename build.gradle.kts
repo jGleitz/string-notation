@@ -78,7 +78,8 @@ artifacts {
 }
 
 lateinit var publication: MavenPublication
-lateinit var releaseRepository: NexusRepository
+lateinit var githubPackages: ArtifactRepository
+lateinit var mavenCentral: NexusRepository
 
 publishing {
 	publications {
@@ -121,11 +122,20 @@ publishing {
 			}
 		}
 	}
+	repositories {
+		githubPackages = maven("https://maven.pkg.github.com/$githubRepository") {
+			name = "GitHubPackages"
+			credentials {
+				username = githubOwner
+				password = githubToken
+			}
+		}
+	}
 }
 
 nexusPublishing {
 	repositories {
-		releaseRepository = sonatype {
+		mavenCentral = sonatype {
 			username.set(ossrhUsername)
 			password.set(ossrhPassword)
 		}
@@ -145,12 +155,14 @@ nexusStaging {
 }
 
 val closeAndReleaseRepository by project.tasks
-closeAndReleaseRepository.mustRunAfter(releaseRepository.publishTask)
+closeAndReleaseRepository.mustRunAfter(mavenCentral.publishTask)
+val publish by tasks
+
 
 task("release") {
 	group = "release"
 	description = "Releases the project to Maven Central"
-	dependsOn(releaseRepository.publishTask, closeAndReleaseRepository)
+	dependsOn(publish, closeAndReleaseRepository)
 }
 
 idea {
