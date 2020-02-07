@@ -34,7 +34,7 @@ jobs:
         run: ./gradlew build
 
   release:
-    name: Release
+    name: Release Check
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/master'
@@ -45,7 +45,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Release
+      - name: Release Check
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
         run: npx semantic-release@17
