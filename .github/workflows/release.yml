@@ -31,6 +31,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
           ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
+          ORG_GRADLE_PROJECT_githubToken: ${{ github.token }}
           ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
           ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
 
@@ -60,9 +61,6 @@ jobs:
           ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
       - name: Publish Documentation
         uses: peaceiris/actions-gh-pages@v3.0.3
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./build/dokka
         with:
-          emptyCommits: false
+          publish_dir: ./build/dokka
+          deploy_key: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
