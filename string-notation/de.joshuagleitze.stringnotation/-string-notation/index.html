@@ -8,7 +8,7 @@
 <a href="../../index.html">string-notation</a>&nbsp;/&nbsp;<a href="../index.html">de.joshuagleitze.stringnotation</a>&nbsp;/&nbsp;<a href="./index.html">StringNotation</a><br/>
 <br/>
 <h1>StringNotation</h1>
-<code><span class="keyword">interface </span><span class="identifier">StringNotation</span></code> <a href="https://github.com/jGleitz/string-notation/blob/master/src/main/kotlin/StringNotation.kt#L6">(source)</a>
+<code><span class="keyword">interface </span><span class="identifier">StringNotation</span></code>
 <p>A convention for representing <a href="../-word/index.html">Words</a>.</p>
 <h3>Functions</h3>
 <table>
@@ -41,6 +41,24 @@
 <td>
 <p>Base class for implementing string notations.</p>
 <code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseStringNotation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">StringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../-java-constant-name/index.html">JavaConstantName</a></h4>
+</td>
+<td>
+<p>A notation for <code>static final</code> fields in Java. This notation is like <a href="../-screaming-snake-case/index.html">ScreamingSnakeCase</a>, but when <a href="print.html">printing</a>, it
+will drop any character that is not allowed in a Java identifier.  If the result is a Java keyword, <code>_</code> will be appended to it.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaConstantName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">StringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../-java-type-name/index.html">JavaTypeName</a></h4>
+</td>
+<td>
+<p>A notation for Java type names. This notation is like <a href="../-upper-camel-case/index.html">UpperCamelCase</a>, but when <a href="print.html">printing</a>, it will drop any
+character that is not allowed in a Java identifier. If the result is a Java keyword, <code>_</code> will be appended to it.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaTypeName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">StringNotation</span></a></code></td>
 </tr>
 </tbody>
 </table>

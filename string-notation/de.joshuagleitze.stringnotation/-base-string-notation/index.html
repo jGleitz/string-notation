@@ -8,7 +8,7 @@
 <a href="../../index.html">string-notation</a>&nbsp;/&nbsp;<a href="../index.html">de.joshuagleitze.stringnotation</a>&nbsp;/&nbsp;<a href="./index.html">BaseStringNotation</a><br/>
 <br/>
 <h1>BaseStringNotation</h1>
-<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseStringNotation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-string-notation/index.html"><span class="identifier">StringNotation</span></a></code> <a href="https://github.com/jGleitz/string-notation/blob/master/src/main/kotlin/BaseStringNotation.kt#L10">(source)</a>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BaseStringNotation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-string-notation/index.html"><span class="identifier">StringNotation</span></a></code>
 <p>Base class for implementing string notations.</p>
 <h3>Constructors</h3>
 <table>
@@ -71,8 +71,7 @@
 <h4><a href="transform-part-after-parse.html">transformPartAfterParse</a></h4>
 </td>
 <td>
-<p>Transforms a parsed part after it has been read. The default implementation is to convert the part to lowercase to discard possibly
-wrong case information.</p>
+<p>Transforms a parsed part after it has been read. The default implementation does not change the part.</p>
 <code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">transformPartAfterParse</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.BaseStringNotation$transformPartAfterParse(kotlin.Int, kotlin.String)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="de.joshuagleitze.stringnotation.BaseStringNotation$transformPartAfterParse(kotlin.Int, kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
 </tr>
 <tr>
@@ -93,18 +92,29 @@ wrong case information.</p>
 <h4><a href="../-java-member-name/index.html">JavaMemberName</a></h4>
 </td>
 <td>
-<p>A notation for java member names. This notation is like <a href="../-lower-camel-case/index.html">LowerCamelCase</a>, but will drop any character that is not allowed in a Java
-identifier when <a href="../-string-notation/print.html">printing</a>.</p>
+<p>A notation for java member names. This notation is like <a href="../-lower-camel-case/index.html">LowerCamelCase</a>, but when <a href="../-string-notation/print.html">printing</a>, it will drop any
+character that is not allowed in a Java identifier. If the result is a Java keyword, <code>_</code> will be appended to it.</p>
 <code><span class="keyword">object </span><span class="identifier">JavaMemberName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
 </tr>
 <tr>
 <td>
-<h4><a href="../-java-type-name/index.html">JavaTypeName</a></h4>
+<h4><a href="../-java-package-name/index.html">JavaPackageName</a></h4>
 </td>
 <td>
-<p>A notation for java type names. This notation is like <a href="../-upper-camel-case/index.html">UpperCamelCase</a>, but will drop any character that is not allowed in a Java
-identifier when <a href="../-string-notation/print.html">printing</a>.</p>
-<code><span class="keyword">object </span><span class="identifier">JavaTypeName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+<p>A notation for whole java packages. When <a href="../-string-notation/print.html">printing</a> parts, it will drop any character that is not allowed in a Java
+identifier. If the result is a Java keyword, <code>_</code> will be appended to it.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaPackageName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../-java-package-part/index.html">JavaPackagePart</a></h4>
+</td>
+<td>
+<p>A notation for java package parts. When <a href="../-string-notation/print.html">printing</a>, it simply concatenates all word parts and drops any character
+that is not allowed in a Java identifier. If the result is a Java keyword, <code>_</code> will be appended to it. When
+<a href="../-string-notation/parse.html">parsing</a>, the notation will recognise word parts both in the <a href="../-lower-camel-case/index.html">LowerCamelCase</a> and the <a href="../-snake-case/index.html">SnakeCase</a> notation.
+However, neither notation is conventional and parsing will usually yield only one word part on real-world inputs.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaPackagePart</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
 </tr>
 <tr>
 <td>

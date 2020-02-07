@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JavaPackagePart - string-notation</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">string-notation</a>&nbsp;/&nbsp;<a href="../index.html">de.joshuagleitze.stringnotation</a>&nbsp;/&nbsp;<a href="./index.html">JavaPackagePart</a><br/>
+<br/>
+<h1>JavaPackagePart</h1>
+<code><span class="keyword">object </span><span class="identifier">JavaPackagePart</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code>
+<p>A notation for java package parts. When <a href="../-string-notation/print.html">printing</a>, it simply concatenates all word parts and drops any character
+that is not allowed in a Java identifier. If the result is a Java keyword, <code>_</code> will be appended to it. When
+<a href="../-string-notation/parse.html">parsing</a>, the notation will recognise word parts both in the <a href="../-lower-camel-case/index.html">LowerCamelCase</a> and the <a href="../-snake-case/index.html">SnakeCase</a> notation.
+However, neither notation is conventional and parsing will usually yield only one word part on real-world inputs.</p>
+<p>Allowed characters are determined using <a href="https://docs.oracle.com/javase/6/docs/api/java/lang/Character.html#isJavaIdentifierStart(char)">Character.isJavaIdentifierStart</a> and <a href="https://docs.oracle.com/javase/6/docs/api/java/lang/Character.html#isJavaIdentifierPart(char)">Character.isJavaIdentifierPart</a>. Keywords are detected
+using <a href="https://docs.oracle.com/javase/6/docs/api/javax/lang/model/SourceVersion.html#isKeyword(java.lang.CharSequence)">SourceVersion.isKeyword</a>.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="print.html">print</a></h4>
+</td>
+<td>
+<p>Transforms a <a href="../-word/index.html">Word</a> into a string that is formatted according to <code>this</code> notation.</p>
+<code><span class="keyword">fun </span><span class="identifier">print</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackagePart$print(de.joshuagleitze.stringnotation.Word)/word">word</span><span class="symbol">:</span>&nbsp;<a href="../-word/index.html"><span class="identifier">Word</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="transform-part-after-parse.html">transformPartAfterParse</a></h4>
+</td>
+<td>
+<p>Transforms a parsed part after it has been read. The default implementation does not change the part.</p>
+<code><span class="keyword">fun </span><span class="identifier">transformPartAfterParse</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackagePart$transformPartAfterParse(kotlin.Int, kotlin.String)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackagePart$transformPartAfterParse(kotlin.Int, kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="transform-part-to-print.html">transformPartToPrint</a></h4>
+</td>
+<td>
+<p>Allows to transform a part before it is being printed. The default implementation does not modify the part in any way.</p>
+<code><span class="keyword">fun </span><span class="identifier">transformPartToPrint</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackagePart$transformPartToPrint(kotlin.Int, kotlin.String)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackagePart$transformPartToPrint(kotlin.Int, kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JavaPackageName - string-notation</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">string-notation</a>&nbsp;/&nbsp;<a href="../index.html">de.joshuagleitze.stringnotation</a>&nbsp;/&nbsp;<a href="./index.html">JavaPackageName</a><br/>
+<br/>
+<h1>JavaPackageName</h1>
+<code><span class="keyword">object </span><span class="identifier">JavaPackageName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code>
+<p>A notation for whole java packages. When <a href="../-string-notation/print.html">printing</a> parts, it will drop any character that is not allowed in a Java
+identifier. If the result is a Java keyword, <code>_</code> will be appended to it.</p>
+<p>Allowed characters are determined using <a href="https://docs.oracle.com/javase/6/docs/api/java/lang/Character.html#isJavaIdentifierStart(char)">Character.isJavaIdentifierStart</a> and <a href="https://docs.oracle.com/javase/6/docs/api/java/lang/Character.html#isJavaIdentifierPart(char)">Character.isJavaIdentifierPart</a>. Keywords are detected
+using <a href="https://docs.oracle.com/javase/6/docs/api/javax/lang/model/SourceVersion.html#isKeyword(java.lang.CharSequence)">SourceVersion.isKeyword</a>.</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="print-before-inner-part.html">printBeforeInnerPart</a></h4>
+</td>
+<td>
+<p>Allows to print characters in front of parts that are not the first part. The default implementation prints nothing.</p>
+<code><span class="keyword">fun </span><span class="identifier">printBeforeInnerPart</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackageName$printBeforeInnerPart(kotlin.Int, kotlin.String)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackageName$printBeforeInnerPart(kotlin.Int, kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="transform-part-to-print.html">transformPartToPrint</a></h4>
+</td>
+<td>
+<p>Allows to transform a part before it is being printed. The default implementation does not modify the part in any way.</p>
+<code><span class="keyword">fun </span><span class="identifier">transformPartToPrint</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackageName$transformPartToPrint(kotlin.Int, kotlin.String)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="de.joshuagleitze.stringnotation.JavaPackageName$transformPartToPrint(kotlin.Int, kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

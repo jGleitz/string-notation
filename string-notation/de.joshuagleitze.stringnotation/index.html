@@ -21,21 +21,50 @@
 </tr>
 <tr>
 <td>
+<h4><a href="-java-constant-name/index.html">JavaConstantName</a></h4>
+</td>
+<td>
+<p>A notation for <code>static final</code> fields in Java. This notation is like <a href="-screaming-snake-case/index.html">ScreamingSnakeCase</a>, but when <a href="-string-notation/print.html">printing</a>, it
+will drop any character that is not allowed in a Java identifier.  If the result is a Java keyword, <code>_</code> will be appended to it.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaConstantName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-string-notation/index.html"><span class="identifier">StringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
 <h4><a href="-java-member-name/index.html">JavaMemberName</a></h4>
 </td>
 <td>
-<p>A notation for java member names. This notation is like <a href="-lower-camel-case/index.html">LowerCamelCase</a>, but will drop any character that is not allowed in a Java
-identifier when <a href="-string-notation/print.html">printing</a>.</p>
+<p>A notation for java member names. This notation is like <a href="-lower-camel-case/index.html">LowerCamelCase</a>, but when <a href="-string-notation/print.html">printing</a>, it will drop any
+character that is not allowed in a Java identifier. If the result is a Java keyword, <code>_</code> will be appended to it.</p>
 <code><span class="keyword">object </span><span class="identifier">JavaMemberName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-java-package-name/index.html">JavaPackageName</a></h4>
+</td>
+<td>
+<p>A notation for whole java packages. When <a href="-string-notation/print.html">printing</a> parts, it will drop any character that is not allowed in a Java
+identifier. If the result is a Java keyword, <code>_</code> will be appended to it.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaPackageName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-java-package-part/index.html">JavaPackagePart</a></h4>
+</td>
+<td>
+<p>A notation for java package parts. When <a href="-string-notation/print.html">printing</a>, it simply concatenates all word parts and drops any character
+that is not allowed in a Java identifier. If the result is a Java keyword, <code>_</code> will be appended to it. When
+<a href="-string-notation/parse.html">parsing</a>, the notation will recognise word parts both in the <a href="-lower-camel-case/index.html">LowerCamelCase</a> and the <a href="-snake-case/index.html">SnakeCase</a> notation.
+However, neither notation is conventional and parsing will usually yield only one word part on real-world inputs.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaPackagePart</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
 </tr>
 <tr>
 <td>
 <h4><a href="-java-type-name/index.html">JavaTypeName</a></h4>
 </td>
 <td>
-<p>A notation for java type names. This notation is like <a href="-upper-camel-case/index.html">UpperCamelCase</a>, but will drop any character that is not allowed in a Java
-identifier when <a href="-string-notation/print.html">printing</a>.</p>
-<code><span class="keyword">object </span><span class="identifier">JavaTypeName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code></td>
+<p>A notation for Java type names. This notation is like <a href="-upper-camel-case/index.html">UpperCamelCase</a>, but when <a href="-string-notation/print.html">printing</a>, it will drop any
+character that is not allowed in a Java identifier. If the result is a Java keyword, <code>_</code> will be appended to it.</p>
+<code><span class="keyword">object </span><span class="identifier">JavaTypeName</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-string-notation/index.html"><span class="identifier">StringNotation</span></a></code></td>
 </tr>
 <tr>
 <td>

@@ -8,7 +8,7 @@
 <a href="../../index.html">string-notation</a>&nbsp;/&nbsp;<a href="../index.html">de.joshuagleitze.stringnotation</a>&nbsp;/&nbsp;<a href="./index.html">NormalWords</a><br/>
 <br/>
 <h1>NormalWords</h1>
-<code><span class="keyword">object </span><span class="identifier">NormalWords</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code> <a href="https://github.com/jGleitz/string-notation/blob/master/src/main/kotlin/Notations.kt#L75">(source)</a>
+<code><span class="keyword">object </span><span class="identifier">NormalWords</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-base-string-notation/index.html"><span class="identifier">BaseStringNotation</span></a></code>
 <p>Notation for words written like in normal language. <a href="../-string-notation/parse.html">Parsing</a> will recognise all substrings that are separated by
 one or more characters of whitespace as a <a href="../-word/parts.html">part</a>. <a href="../-string-notation/print.html">Printing</a> will print the parts separated by one
 space.</p>
@@ -22,15 +22,6 @@ space.</p>
 <td>
 <p>Allows to print characters in front of parts that are not the first part. The default implementation prints nothing.</p>
 <code><span class="keyword">fun </span><span class="identifier">printBeforeInnerPart</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.NormalWords$printBeforeInnerPart(kotlin.Int, kotlin.String)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="de.joshuagleitze.stringnotation.NormalWords$printBeforeInnerPart(kotlin.Int, kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
-</tr>
-<tr>
-<td>
-<h4><a href="transform-part-after-parse.html">transformPartAfterParse</a></h4>
-</td>
-<td>
-<p>Transforms a parsed part after it has been read. The default implementation is to convert the part to lowercase to discard possibly
-wrong case information.</p>
-<code><span class="keyword">fun </span><span class="identifier">transformPartAfterParse</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.NormalWords$transformPartAfterParse(kotlin.Int, kotlin.String)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="de.joshuagleitze.stringnotation.NormalWords$transformPartAfterParse(kotlin.Int, kotlin.String)/part">part</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
 </tr>
 </tbody>
 </table>
