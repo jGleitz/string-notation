@@ -152,6 +152,7 @@ signing {
 nexusStaging {
 	username = ossrhUsername
 	password = ossrhPassword
+	numberOfRetries = 42
 }
 
 val closeAndReleaseRepository by project.tasks
