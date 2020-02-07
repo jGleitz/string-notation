@@ -156,13 +156,11 @@ nexusStaging {
 
 val closeAndReleaseRepository by project.tasks
 closeAndReleaseRepository.mustRunAfter(mavenCentral.publishTask)
-val publish by tasks
-
 
 task("release") {
 	group = "release"
 	description = "Releases the project to Maven Central"
-	dependsOn(publish, closeAndReleaseRepository)
+	dependsOn(githubPackages.publishTask, mavenCentral.publishTask, closeAndReleaseRepository)
 }
 
 idea {
@@ -179,4 +177,5 @@ fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.
 val Project.versionDetails
 	get() = (this.extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
 
+val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
 val NexusRepository.publishTask get() = tasks["publishTo${this.name.capitalize()}"]
