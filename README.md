@@ -3,11 +3,28 @@ _Convert between different string notations commonly found in programming._
 Useful, for example, to build identifiers when generating code.
 Also includes notations to build valid Java type or member names. 
 
-[API Documentation](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/)
+#### [API Documentation](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/)
+
+## Notations
+We support the following notations:
+
+ * General Programming
+    * [LowerCamelCase](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-lower-camel-case/), e.g. `thisIsMyString`
+    * [UpperCamelCase](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-upper-camel-case/), e.g. `ThisIsMyString`
+    * [SnakeCase](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-snake-case/), e.g. `this_is_MY_String`
+    * [ScreamingSnakeCase](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-screaming-snake-case/), e.g. `THIS_IS_MY_STRING`
+ * Java
+   * [JavaMemberName](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-member-name/), e.g. `thisIsMyString`
+   * [JavaTypeName](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-type-name/), e.g. `ThisIsMyString`
+   * [JavaConstantName](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-constant-name/), e.g. `THIS_IS_MY_STRING`
+   * [JavaPackageName](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-package-name/), e.g. `this.is.MY.String`
+   * [JavaPackagePart](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-package-part/), e.g. `thisismystring`
+ * Miscellaneous    
+    * [NormalWords](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-normal-words/), e.g. `this is MY String`
 
 ## Usage
-`string-notation` converts Strings from their notation into a [Word](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-word), which is a notation-agnostic representation.
-[Words](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-word) can then be transformed into Strings in a notation again.
+`string-notation` converts Strings from their notation into a [Word](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-word/), which is a notation-agnostic representation.
+[Words](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-word/) can then be transformed into Strings in a notation again.
 
 ### Kotlin
 
