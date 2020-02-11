@@ -23,6 +23,23 @@ class WordTest {
 
 	@Test
 	fun `allows to add parts`() {
-		expect((Word("with") + "more" + "parts")).feature(Word::partsList).containsExactly("with", "more", "parts")
+		expect((Word("with") + "more" + "parts"))
+			.feature(Word::partsList)
+			.containsExactly("with", "more", "parts")
+	}
+
+	@Test
+	fun `allows to add words`() {
+		expect(Word("with") + Word("more", "parts"))
+			.feature(Word::partsList)
+			.containsExactly("with", "more", "parts")
+	}
+
+	@Test
+	fun `allows to transform parts`() {
+		expect(Word("a", "b", "c"))
+			.feature(Word::mapParts, String::toUpperCase)
+			.feature(Word::partsList)
+			.containsExactly("A", "B", "C");
 	}
 }

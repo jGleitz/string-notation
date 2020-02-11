@@ -24,6 +24,11 @@ class Word(val parts: Sequence<String>) {
 	fun toNotation(notation: StringNotation) = notation.print(this)
 
 	/**
+	 * Creates a new word, with all its parts transformed by the provided [transform] function.
+	 */
+	fun mapParts(transform: (String) -> String) = Word(parts.map(transform))
+
+	/**
 	 * Appends a part to this word.
 	 */
 	operator fun plus(part: String) = Word(parts + part)
