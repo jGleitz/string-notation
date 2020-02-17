@@ -1,4 +1,5 @@
 import de.marcphilipp.gradle.nexus.NexusRepository
+import org.gradle.api.JavaVersion.VERSION_1_8
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -46,6 +47,11 @@ tasks.named<KotlinCompile>("compileTestKotlin") {
 	kotlinOptions {
 		jvmTarget = "1.8"
 	}
+}
+
+java {
+	sourceCompatibility = VERSION_1_8
+	targetCompatibility = VERSION_1_8
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
