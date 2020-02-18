@@ -54,11 +54,42 @@ word in any spoken language. A <code>Word</code> consists of <a href="parts.html
 <tbody>
 <tr>
 <td>
+<h4><a href="equals.html">equals</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="flat-map-parts.html">flatMapParts</a></h4>
+</td>
+<td>
+<p>Creates a new word, with all its parts transformed by the provided <a href="flat-map-parts.html#de.joshuagleitze.stringnotation.Word$flatMapParts(kotlin.Function1((kotlin.String, kotlin.sequences.Sequence(()))))/transform">transform</a> function, which may return more than one new part for
+every existing part.</p>
+<code><span class="keyword">fun </span><span class="identifier">flatMapParts</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$flatMapParts(kotlin.Function1((kotlin.String, kotlin.sequences.Sequence(()))))/transform">transform</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/index.html"><span class="identifier">Sequence</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Word</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="hash-code.html">hashCode</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
 <h4><a href="map-parts.html">mapParts</a></h4>
 </td>
 <td>
 <p>Creates a new word, with all its parts transformed by the provided <a href="map-parts.html#de.joshuagleitze.stringnotation.Word$mapParts(kotlin.Function1((kotlin.String, )))/transform">transform</a> function.</p>
 <code><span class="keyword">fun </span><span class="identifier">mapParts</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$mapParts(kotlin.Function1((kotlin.String, )))/transform">transform</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Word</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="parts-from-notation.html">partsFromNotation</a></h4>
+</td>
+<td>
+<p>Creates a new words, with all its parts parsed by the provided <a href="parts-from-notation.html#de.joshuagleitze.stringnotation.Word$partsFromNotation(de.joshuagleitze.stringnotation.StringNotation)/notation">notation</a>. Allows to parse words that use a combination of notations.</p>
+<code><span class="keyword">fun </span><span class="identifier">partsFromNotation</span><span class="symbol">(</span><span class="identifier" id="de.joshuagleitze.stringnotation.Word$partsFromNotation(de.joshuagleitze.stringnotation.StringNotation)/notation">notation</span><span class="symbol">:</span>&nbsp;<a href="../-string-notation/index.html"><span class="identifier">StringNotation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Word</span></a></code></td>
 </tr>
 <tr>
 <td>
