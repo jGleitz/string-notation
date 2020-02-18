@@ -35,7 +35,7 @@ class Word(val parts: Sequence<String>) {
 	fun flatMapParts(transform: (String) -> Sequence<String>) = Word(parts.flatMap(transform))
 
 	/**
-	 * Creates a new words, with all its parts parsed by the provided [notation]. Allows to parse words that use a combination of notations.
+	 * Creates a new word, with all its parts parsed by the provided [notation]. Allows to parse words that use a combination of notations.
 	 */
 	fun partsFromNotation(notation: StringNotation) = Word(parts.flatMap { it.fromNotation(notation).parts })
 
