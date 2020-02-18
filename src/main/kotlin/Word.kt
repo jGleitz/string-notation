@@ -29,6 +29,17 @@ class Word(val parts: Sequence<String>) {
 	fun mapParts(transform: (String) -> String) = Word(parts.map(transform))
 
 	/**
+	 * Creates a new word, with all its parts transformed by the provided [transform] function, which may return more than one new part for
+	 * every existing part.
+	 */
+	fun flatMapParts(transform: (String) -> Sequence<String>) = Word(parts.flatMap(transform))
+
+	/**
+	 * Creates a new words, with all its parts parsed by the provided [notation]. Allows to parse words that use a combination of notations.
+	 */
+	fun partsFromNotation(notation: StringNotation) = Word(parts.flatMap { it.fromNotation(notation).parts })
+
+	/**
 	 * Appends a part to this word.
 	 */
 	operator fun plus(part: String) = Word(parts + part)
@@ -39,6 +50,10 @@ class Word(val parts: Sequence<String>) {
 	operator fun plus(word: Word) = Word(parts + word.parts)
 
 	override fun toString() = "Word(${parts.joinToString { "\"$it\"" }})"
+
+	override fun equals(other: Any?) = this === other || (other is Word && partsList == other.partsList)
+
+	override fun hashCode() = partsList.hashCode()
 }
 
 /**
