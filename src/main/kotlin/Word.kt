@@ -40,12 +40,17 @@ class Word(val parts: Sequence<String>) {
 	fun partsFromNotation(notation: StringNotation) = Word(parts.flatMap { it.fromNotation(notation).parts })
 
 	/**
-	 * Appends a part to this word.
+	 * Creates a copy of this word with the provided [part] appended.
 	 */
 	operator fun plus(part: String) = Word(parts + part)
 
 	/**
-	 * Appends all parts of the given [word] to this word.
+	 * Creates a copy of this word with all provided [parts] appended.
+	 */
+	fun plus(vararg parts: String) = Word(this.parts + parts)
+
+	/**
+	 * Creates a copy of this word with all parts of the provided [word] appended.
 	 */
 	operator fun plus(word: Word) = Word(parts + word.parts)
 

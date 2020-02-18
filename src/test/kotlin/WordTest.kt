@@ -42,6 +42,8 @@ class WordTest {
 	fun `allows to add parts`() {
 		expect((Word("with") + "more" + "parts"))
 			.toBe(Word("with", "more", "parts"))
+		expect(Word("with").plus("more", "parts"))
+			.toBe(Word("with", "more", "parts"))
 	}
 
 	@Test
