@@ -26,7 +26,7 @@ dependencies {
 	implementation(kotlin(module = "stdlib"))
 
 	testImplementation(kotlin("reflect"))
-	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.9.2")
+	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.10.0")
 	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.6.0")
 	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.6.0")
 
