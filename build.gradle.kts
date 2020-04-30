@@ -27,7 +27,7 @@ dependencies {
 
 	testImplementation(kotlin("reflect"))
 	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.11.1")
-	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.6.1")
+	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.6.2")
 	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.6.2")
 
 	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.6.2")
