@@ -30,7 +30,7 @@ dependencies {
 	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.6.1")
 	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.6.2")
 
-	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.6.1")
+	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.6.2")
 }
 
 val ossrhUsername: String? by project
