@@ -1,17 +1,18 @@
+import com.moowork.gradle.node.yarn.YarnTask
 import de.marcphilipp.gradle.nexus.NexusRepository
 import org.gradle.api.JavaVersion.VERSION_1_8
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm").version("1.3.61")
+	kotlin("jvm") version "1.4.0"
+	id("com.palantir.git-version") version "0.12.3"
+	id("com.github.node-gradle.node") version "2.2.4"
 	id("org.jetbrains.dokka") version "1.4.0"
 	`maven-publish`
 	signing
 	id("de.marcphilipp.nexus-publish") version "0.4.0"
 	id("io.codearte.nexus-staging") version "0.22.0"
-	id("com.palantir.git-version") version "0.12.3"
-	idea
 }
 
 group = "de.joshuagleitze"
@@ -23,9 +24,6 @@ repositories {
 }
 
 dependencies {
-	implementation(kotlin(module = "stdlib"))
-
-	testImplementation(kotlin("reflect"))
 	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.13.0")
 	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.6.2")
 	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.6.2")
@@ -33,26 +31,60 @@ dependencies {
 	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.6.2")
 }
 
-val ossrhUsername: String? by project
-val ossrhPassword: String? by project
-val githubRepository: String? by project
-val githubOwner = githubRepository?.split("/")?.get(0)
-val githubToken: String? by project
-
 tasks.withType<Test> {
 	useJUnitPlatform()
-}
-
-tasks.named<KotlinCompile>("compileTestKotlin") {
-	kotlinOptions {
-		jvmTarget = "1.8"
-	}
+	reports.junitXml.isEnabled = true
 }
 
 java {
 	sourceCompatibility = VERSION_1_8
 	targetCompatibility = VERSION_1_8
 }
+
+tasks.withType<KotlinCompile> {
+	kotlinOptions {
+		jvmTarget = "1.8"
+	}
+}
+
+node {
+	download = true
+	version = "12.18.3"
+}
+
+val yarnInstall by tasks.registering(YarnTask::class) {
+	args = listOf("install")
+}
+
+val prepare by tasks.registering {
+	group = "build setup"
+	dependsOn(yarnInstall)
+}
+
+val yarnInstallCi by tasks.registering(YarnTask::class) {
+	args = listOf("install", "--immutable")
+}
+
+val prepareCi by tasks.registering {
+	group = "build setup"
+	dependsOn(yarnInstallCi)
+}
+
+val checkCommits by tasks.creating(YarnTask::class) {
+	group = "verification"
+	args = listOf("commitlint")
+}
+
+val checkRelease by tasks.creating(YarnTask::class) {
+	group = "release"
+	args = listOf("semantic-release")
+}
+
+val ossrhUsername: String? by project
+val ossrhPassword: String? by project
+val githubRepository: String? by project
+val githubOwner = githubRepository?.split("/")?.get(0)
+val githubToken: String? by project
 
 val sourcesJar by tasks.creating(Jar::class) {
 	group = "build"
@@ -170,19 +202,8 @@ task("release") {
 	dependsOn(githubPackages.publishTask, mavenCentral.publishTask, closeAndReleaseRepository)
 }
 
-idea {
-	module {
-		isDownloadJavadoc = true
-		isDownloadSources = true
-	}
-}
-
 val Project.isSnapshot get() = versionDetails.commitDistance != 0
-
 fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.length) else this
-
-val Project.versionDetails
-	get() = (this.extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
-
+val Project.versionDetails get() = (this.extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
 val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
 val NexusRepository.publishTask get() = tasks["publishTo${this.name.capitalize()}"]
