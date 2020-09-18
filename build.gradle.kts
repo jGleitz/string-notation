@@ -28,7 +28,7 @@ dependencies {
 	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.7.0")
 	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.6.2")
 
-	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.6.2")
+	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.7.0")
 }
 
 tasks.withType<Test> {
