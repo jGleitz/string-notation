@@ -26,7 +26,7 @@ repositories {
 dependencies {
 	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.13.0")
 	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.7.0")
-	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.6.2")
+	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.7.0")
 
 	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.7.0")
 }
