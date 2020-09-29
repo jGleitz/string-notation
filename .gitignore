@@ -2,10 +2,5 @@
 build/
 .gradle/
 
-### Yarn
-node_modules/
-.yarn/*
-!.yarn/releases
-
 ### IntelliJ
 /.idea/
