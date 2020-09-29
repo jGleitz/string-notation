@@ -17,8 +17,7 @@ jobs:
           path: |
             ~/.gradle/wrapper
             ~/.gradle/caches
-            .yarn/cache
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.*', 'yarn.lock') }}
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.*') }}
           restore-keys: |
             gradle-${{ runner.os }}
             gradle-
@@ -27,7 +26,7 @@ jobs:
         with:
           java-version: 11
       - name: Prepare
-        run: ./gradlew clean prepareCi dependencies
+        run: ./gradlew clean dependencies
       - name: Assemble Artefacts
         run: ./gradlew assemble
         env:
@@ -54,8 +53,7 @@ jobs:
           path: |
             ~/.gradle/wrapper
             ~/.gradle/caches
-            .yarn/cache
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.*', 'yarn.lock') }}
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.*') }}
           restore-keys: |
             gradle-${{ runner.os }}
             gradle-
@@ -64,7 +62,7 @@ jobs:
         with:
           java-version: 11
       - name: Prepare
-        run: ./gradlew clean prepareCi dependencies
+        run: ./gradlew clean dependencies
       - name: Generate Documentation
         run: ./gradlew dokkaHtml
         env:
