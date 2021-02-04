@@ -23,10 +23,10 @@ repositories {
 
 dependencies {
 	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.15.0")
-	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.7.0")
-	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.7.0")
+	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.7.1")
+	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.7.1")
 
-	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.7.0")
+	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.7.1")
 }
 
 tasks.withType<Test> {
