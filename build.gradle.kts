@@ -1,4 +1,4 @@
-import de.marcphilipp.gradle.nexus.NexusRepository
+import io.github.gradlenexus.publishplugin.NexusRepository
 import org.gradle.api.JavaVersion.VERSION_1_8
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -9,8 +9,7 @@ plugins {
 	id("org.jetbrains.dokka") version "1.4.32"
 	`maven-publish`
 	signing
-	id("de.marcphilipp.nexus-publish") version "0.4.0"
-	id("io.codearte.nexus-staging") version "0.30.0"
+	id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
 group = "de.joshuagleitze"
@@ -156,23 +155,17 @@ signing {
 	sign(publication)
 }
 
-nexusStaging {
-	username = ossrhUsername
-	password = ossrhPassword
-	numberOfRetries = 42
-}
-
-val closeAndReleaseRepository by project.tasks
-closeAndReleaseRepository.mustRunAfter(mavenCentral.publishTask)
+val closeAndReleaseStagingRepository by project.tasks
+closeAndReleaseStagingRepository.mustRunAfter(mavenCentral.publishTask)
 
 task("release") {
 	group = "release"
 	description = "Releases the project to Maven Central"
-	dependsOn(githubPackages.publishTask, mavenCentral.publishTask, closeAndReleaseRepository)
+	dependsOn(githubPackages.publishTask, mavenCentral.publishTask, closeAndReleaseStagingRepository)
 }
 
 val Project.isSnapshot get() = versionDetails.commitDistance != 0
 fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.length) else this
 val Project.versionDetails get() = (this.extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
 val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
-val NexusRepository.publishTask get() = tasks["publishTo${this.name.capitalize()}"]
+val NexusRepository.publishTask get() = "publishTo${this.name.capitalize()}"
