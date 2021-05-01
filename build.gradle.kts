@@ -4,9 +4,9 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm") version "1.4.0"
+	kotlin("jvm") version "1.4.32"
 	id("com.palantir.git-version") version "0.12.3"
-	id("org.jetbrains.dokka") version "1.4.30"
+	id("org.jetbrains.dokka") version "1.4.32"
 	`maven-publish`
 	signing
 	id("de.marcphilipp.nexus-publish") version "0.4.0"
@@ -25,6 +25,10 @@ dependencies {
 	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.15.0")
 	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.7.1")
 	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.7.1")
+
+	constraints {
+		testImplementation(kotlin("reflect", KotlinVersion.CURRENT.toString()))
+	}
 
 	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.7.1")
 }
