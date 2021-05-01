@@ -18,7 +18,7 @@ version = if (isSnapshot) versionDetails.gitHash else versionDetails.lastTag.dro
 status = if (isSnapshot) "snapshot" else "release"
 
 repositories {
-	jcenter()
+	mavenCentral()
 }
 
 dependencies {
