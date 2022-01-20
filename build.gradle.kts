@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("jvm") version "1.6.10"
-	id("com.palantir.git-version") version "0.12.3"
+	id("com.palantir.git-version") version "0.13.0"
 	id("org.jetbrains.dokka") version "1.5.0"
 	`maven-publish`
 	signing
