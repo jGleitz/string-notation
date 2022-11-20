@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	kotlin("jvm") version "1.6.10"
 	id("com.palantir.git-version") version "0.13.0"
-	id("org.jetbrains.dokka") version "1.5.0"
+	id("org.jetbrains.dokka") version "1.7.20"
 	`maven-publish`
 	signing
 	id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
