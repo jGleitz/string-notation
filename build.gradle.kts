@@ -9,7 +9,7 @@ plugins {
 	id("org.jetbrains.dokka") version "1.7.20"
 	`maven-publish`
 	signing
-	id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+	id("io.github.gradle-nexus.publish-plugin") version "1.2.0"
 }
 
 group = "de.joshuagleitze"
