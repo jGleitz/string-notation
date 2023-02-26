@@ -174,8 +174,7 @@ task("release") {
 
 val Project.isSnapshot get() = versionDetails.commitDistance != 0
 fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.length) else this
-fun String.capitalize() = this.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 
 val Project.versionDetails get() = (this.extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
 val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
-val NexusRepository.publishTask get() = "publishTo${this.name.capitalize()}"
+val NexusRepository.publishTask get() = "publishTo${this.name.replaceFirstChar { it.titlecase() }}"
