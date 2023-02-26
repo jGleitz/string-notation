@@ -10,6 +10,7 @@ plugins {
 	`maven-publish`
 	signing
 	id("io.github.gradle-nexus.publish-plugin") version "1.2.0"
+	idea
 }
 
 group = "de.joshuagleitze"
@@ -32,6 +33,12 @@ dependencies {
 	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.7.2")
 }
 
+idea {
+	module {
+		isDownloadSources = true
+		isDownloadJavadoc = true
+	}
+}
 
 tasks.withType<Test> {
 	useJUnitPlatform()
