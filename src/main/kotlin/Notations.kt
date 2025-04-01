@@ -9,10 +9,10 @@ internal val camelCaseSplitRegex = Regex("(?<=.)(?=\\p{Lu})")
  *
  * @see JavaTypeName
  */
-object UpperCamelCase: BaseStringNotation(camelCaseSplitRegex) {
-	override fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
+object UpperCamelCase : BaseStringNotation(camelCaseSplitRegex) {
+	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
-	public override fun transformPartToPrint(index: Int, part: String) = part.toFirstUpperOtherLowerCase()
+	public override fun transformPartToPrint(index: Int, part: String) = part.firstUpperThenLowerCase()
 }
 
 /**
@@ -20,21 +20,22 @@ object UpperCamelCase: BaseStringNotation(camelCaseSplitRegex) {
  *
  * @see JavaMemberName
  */
-object LowerCamelCase: BaseStringNotation(camelCaseSplitRegex) {
-	override fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
+object LowerCamelCase : BaseStringNotation(camelCaseSplitRegex) {
+	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
-	override fun transformPartToPrint(index: Int, part: String) = if (index == 0) part.toLowerCase() else part.toFirstUpperOtherLowerCase()
+	override fun transformPartToPrint(index: Int, part: String) =
+		if (index == 0) part.lowercase(Locale.ROOT) else part.firstUpperThenLowerCase()
 }
 
 /**
  * The `SCREAMING_SNAKE_CASE` notation.
  */
-object ScreamingSnakeCase: BaseStringNotation(Regex("_")) {
-	override fun transformPartAfterParse(index: Int, part: String) = part.toLowerCase(Locale.ROOT)
+object ScreamingSnakeCase : BaseStringNotation(Regex("_")) {
+	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
 	override fun printBeforeInnerPart(index: Int, part: String) = "_"
 
-	override fun transformPartToPrint(index: Int, part: String) = part.toUpperCase()
+	override fun transformPartToPrint(index: Int, part: String) = part.uppercase(Locale.ROOT)
 }
 
 /**
@@ -49,9 +50,10 @@ object SnakeCase: BaseStringNotation(Regex("_")) {
  * one or more characters of whitespace as a [part][Word.parts]. [Printing][StringNotation.print] will print the parts separated by one
  * space.
  */
-object NormalWords: BaseStringNotation(Regex("[\\s]+")) {
+object NormalWords: BaseStringNotation(Regex("\\s+")) {
 	override fun printBeforeInnerPart(index: Int, part: String) = " "
 }
 
-internal fun String.toFirstUpperOtherLowerCase() = if (isNotEmpty()) this[0].toUpperCase() + substring(1).toLowerCase() else this
+internal fun String.firstUpperThenLowerCase() =
+	if (isNotEmpty()) this[0].uppercaseChar() + substring(1).lowercase(Locale.ROOT) else this
 
