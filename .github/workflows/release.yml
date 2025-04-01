@@ -4,6 +4,10 @@ on:
   release:
     types: [published]
 
+env:
+  ORG_GRADLE_PROJECT_version: ${{ github.event.release.tag_name }}
+  ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
+
 jobs:
   release:
     name: Release Artefacts
@@ -30,14 +34,11 @@ jobs:
         run: ./gradlew clean dependencies
       - name: Assemble Artefacts
         run: ./gradlew assemble
-        env:
-          ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
       - name: Release Artefacts
         run: ./gradlew release
         env:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
-          ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
           ORG_GRADLE_PROJECT_githubToken: ${{ secrets.RELEASE_GITHUB_TOKEN }}
           ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
           ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
@@ -66,9 +67,7 @@ jobs:
       - name: Prepare
         run: ./gradlew clean dependencies
       - name: Generate Documentation
-        run: ./gradlew dokkaHtml
-        env:
-          ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
+        run: ./gradlew dokkaGenerate
       - name: Publish Documentation
         uses: peaceiris/actions-gh-pages@v3.9.3
         with:

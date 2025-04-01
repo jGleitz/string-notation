@@ -35,5 +35,5 @@ abstract class BaseStringNotation(private val splitAt: Regex): StringNotation {
 		.foldIndexed(StringBuffer()) { index, existing, part -> existing.append(printBeforePart(index, part)).append(part) }
 		.toString()
 
-	override fun toString() = this::class.java.simpleName!!
+	override fun toString(): String = this::class.java.simpleName
 }
