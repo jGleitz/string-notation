@@ -1,10 +1,6 @@
 package de.joshuagleitze.stringnotation
 
-import ch.tutteli.atrium.api.fluent.en_GB.asIterable
-import ch.tutteli.atrium.api.fluent.en_GB.containsExactly
-import ch.tutteli.atrium.api.fluent.en_GB.feature
-import ch.tutteli.atrium.api.fluent.en_GB.notToBe
-import ch.tutteli.atrium.api.fluent.en_GB.toBe
+import ch.tutteli.atrium.api.fluent.en_GB.*
 import ch.tutteli.atrium.api.verbs.expect
 import org.junit.jupiter.api.Test
 
@@ -55,7 +51,7 @@ class WordTest {
 	@Test
 	fun `allows to map parts`() {
 		expect(Word("a", "b", "c"))
-			.feature(Word::mapParts, String::toUpperCase)
+			.feature(Word::mapParts, String::uppercase)
 			.toBe(Word("A", "B", "C"))
 	}
 
