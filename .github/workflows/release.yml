@@ -70,7 +70,7 @@ jobs:
       - name: Generate Documentation
         run: ./gradlew dokkaGenerate
       - name: Publish Documentation
-        uses: peaceiris/actions-gh-pages@v3.9.3
+        uses: peaceiris/actions-gh-pages@v4.0.0
         with:
           publish_dir: ./build/dokka/html
           deploy_key: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
