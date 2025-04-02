@@ -1,4 +1,44 @@
-$dokka.format:html
+$dokka.format:html-v1
 $dokka.linkExtension:html
-$dokka.location:de.joshuagleitze.stringnotation$fromNotation(kotlin.String, de.joshuagleitze.stringnotation.StringNotation)de.joshuagleitze.stringnotation/kotlin.-string/from-notation.html
+$dokka.location:de.joshuagleitze.stringnotation////PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/index.html
+$dokka.location:de.joshuagleitze.stringnotation//fromNotation/kotlin.String#de.joshuagleitze.stringnotation.StringNotation/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/from-notation.html
+$dokka.location:de.joshuagleitze.stringnotation/BaseStringNotation///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-base-string-notation/index.html
+$dokka.location:de.joshuagleitze.stringnotation/BaseStringNotation/BaseStringNotation/#kotlin.text.Regex/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-base-string-notation/-base-string-notation.html
+$dokka.location:de.joshuagleitze.stringnotation/BaseStringNotation/parse/#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-base-string-notation/parse.html
+$dokka.location:de.joshuagleitze.stringnotation/BaseStringNotation/print/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-base-string-notation/print.html
+$dokka.location:de.joshuagleitze.stringnotation/BaseStringNotation/toString/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-base-string-notation/to-string.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaConstantName///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-constant-name/index.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaConstantName/print/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-constant-name/print.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaMemberName///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-member-name/index.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaMemberName/print/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-member-name/print.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaPackageName///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-package-name/index.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaPackagePart///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-package-part/index.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaPackagePart/print/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-package-part/print.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaTypeName///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-type-name/index.html
+$dokka.location:de.joshuagleitze.stringnotation/JavaTypeName/print/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-java-type-name/print.html
+$dokka.location:de.joshuagleitze.stringnotation/LowerCamelCase///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-lower-camel-case/index.html
+$dokka.location:de.joshuagleitze.stringnotation/NormalWords///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-normal-words/index.html
+$dokka.location:de.joshuagleitze.stringnotation/ScreamingSnakeCase///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-screaming-snake-case/index.html
+$dokka.location:de.joshuagleitze.stringnotation/SnakeCase///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-snake-case/index.html
+$dokka.location:de.joshuagleitze.stringnotation/StringNotation///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-string-notation/index.html
+$dokka.location:de.joshuagleitze.stringnotation/StringNotation/parse/#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-string-notation/parse.html
+$dokka.location:de.joshuagleitze.stringnotation/StringNotation/print/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-string-notation/print.html
+$dokka.location:de.joshuagleitze.stringnotation/UpperCamelCase///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-upper-camel-case/index.html
+$dokka.location:de.joshuagleitze.stringnotation/UpperCamelCase/transformPartToPrint/#kotlin.Int#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-upper-camel-case/transform-part-to-print.html
+$dokka.location:de.joshuagleitze.stringnotation/Word///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/index.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.Array[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.sequences.Sequence[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/equals/#kotlin.Any?/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/equals.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/flatMapParts/#kotlin.Function1[kotlin.String,kotlin.sequences.Sequence[kotlin.String]]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/flat-map-parts.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/hashCode/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/hash-code.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/mapParts/#kotlin.Function1[kotlin.String,kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/map-parts.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/parts/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/parts.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/partsFromNotation/#de.joshuagleitze.stringnotation.StringNotation/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/parts-from-notation.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/partsList/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/parts-list.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/plus/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/plus.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/plus/#kotlin.Array[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/plus.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/plus/#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/plus.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/toNotation/#de.joshuagleitze.stringnotation.StringNotation/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/to-notation.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/toString/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/to-string.html
 de.joshuagleitze.stringnotation
