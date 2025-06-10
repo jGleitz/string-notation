@@ -19,6 +19,9 @@ We support the following notations:
    * [JavaConstantName](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-constant-name/), e.g. `THIS_IS_MY_STRING`
    * [JavaPackageName](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-package-name/), e.g. `this.is.MY.String`
    * [JavaPackagePart](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-java-package-part/), e.g. `thisismystring`
+ * File System
+   * [UnixPath](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-unix-path/), e.g. `/home/user/some/file`
+   * [WindowsPath](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-windows-path/), e.g. `C:/Users/user/some/file`
  * Miscellaneous    
     * [NormalWords](https://jgleitz.github.io/string-notation/string-notation/de.joshuagleitze.stringnotation/-normal-words/), e.g. `this is MY String`
 
