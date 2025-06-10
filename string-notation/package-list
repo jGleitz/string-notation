@@ -23,8 +23,10 @@ $dokka.location:de.joshuagleitze.stringnotation/SnakeCase///PointingToDeclaratio
 $dokka.location:de.joshuagleitze.stringnotation/StringNotation///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-string-notation/index.html
 $dokka.location:de.joshuagleitze.stringnotation/StringNotation/parse/#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-string-notation/parse.html
 $dokka.location:de.joshuagleitze.stringnotation/StringNotation/print/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-string-notation/print.html
+$dokka.location:de.joshuagleitze.stringnotation/UnixPath///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-unix-path/index.html
 $dokka.location:de.joshuagleitze.stringnotation/UpperCamelCase///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-upper-camel-case/index.html
 $dokka.location:de.joshuagleitze.stringnotation/UpperCamelCase/transformPartToPrint/#kotlin.Int#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-upper-camel-case/transform-part-to-print.html
+$dokka.location:de.joshuagleitze.stringnotation/WindowsPath///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-windows-path/index.html
 $dokka.location:de.joshuagleitze.stringnotation/Word///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/index.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.Array[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html

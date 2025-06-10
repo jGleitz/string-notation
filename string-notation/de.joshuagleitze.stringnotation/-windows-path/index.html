@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>StringNotation</title>
+    <title>WindowsPath</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../../";</script>
     <script>document.documentElement.classList.replace("no-js","js");</script>
@@ -104,43 +104,58 @@
                 </div>
             </div>
             <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="string-notation::de.joshuagleitze.stringnotation/StringNotation///PointingToDeclaration//-251573632">
-  <div class="breadcrumbs"><a href="../../../index.html">string-notation</a><span class="delimiter">/</span><a href="../index.html">de.joshuagleitze.stringnotation</a><span class="delimiter">/</span><span class="current">StringNotation</span></div>
+<div class="main-content" data-page-type="classlike" id="content" pageIds="string-notation::de.joshuagleitze.stringnotation/WindowsPath///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">string-notation</a><span class="delimiter">/</span><a href="../index.html">de.joshuagleitze.stringnotation</a><span class="delimiter">/</span><span class="current">WindowsPath</span></div>
   <div class="cover ">
-    <h1 class="cover"><span>String</span><wbr></wbr><span><span>Notation</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">StringNotation</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/jGleitz/string-notation/blob/main/src/main/kotlin/StringNotation.kt#L6">source</a>)</span></span></div><p class="paragraph">A convention for representing <a href="../-word/index.html">Words</a>.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-base-string-notation/index.html">BaseStringNotation</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-java-type-name/index.html">JavaTypeName</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-java-constant-name/index.html">JavaConstantName</a></div></span></div><div></div></div></div></div></div></div>
+    <h1 class="cover"><span>Windows</span><wbr></wbr><span><span>Path</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">WindowsPath</a> : <a href="../-base-string-notation/index.html">BaseStringNotation</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/jGleitz/string-notation/blob/main/src/main/kotlin/FileSystemNotations.kt#L25">source</a>)</span></span></div><p class="paragraph">A notation for paths on a Windows file system. <a href="../-string-notation/parse.html">Parsing</a> will recognise all substrings that are separated by <code class="lang-kotlin">\</code> as a <a href="../-word/parts.html">part</a>. <a href="../-string-notation/print.html">Printing</a> will print the parts separated by <code class="lang-kotlin">\</code> after removing the following characters from them:</p><ul><li><p class="paragraph">ASCII control characters</p></li><li><p class="paragraph"><code class="lang-kotlin">&lt;</code>, <code class="lang-kotlin">&gt;</code>, <code class="lang-kotlin">:</code>, <code class="lang-kotlin">&quot;</code>, <code class="lang-kotlin">/</code>, <code class="lang-kotlin">\</code>, <code class="lang-kotlin">|</code>, <code class="lang-kotlin">?</code>, <code class="lang-kotlin">*</code></p></li></ul><p class="paragraph">To allow printing paths that start with a drive letter, the notation will not strip a <code class="lang-kotlin">:</code> from the first part if it’s the last character.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="FUNCTION">
         <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-2005587377%2FFunctions%2F-251573632" anchor-label="parse" id="-2005587377%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+        <div class="table"><a data-name="214394240%2FFunctions%2F-251573632" anchor-label="parse" id="214394240%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="parse.html"><span><span>parse</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2005587377%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-base-string-notation/parse.html"><span><span>parse</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="214394240%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="parse.html"><span class="token function">parse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sourceString<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-word/index.html">Word</a></div><div class="brief "><p class="paragraph">Transforms an input string that is in <code class="lang-kotlin">this</code> notation into a notation-agnostic <a href="../-word/index.html">Word</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-base-string-notation/parse.html"><span class="token function">parse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sourceString<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-word/index.html">Word</a></div><div class="brief "><p class="paragraph">Transforms an input string that is in <code class="lang-kotlin">this</code> notation into a notation-agnostic <a href="../-word/index.html">Word</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-60186815%2FFunctions%2F-251573632" anchor-label="print" id="-60186815%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="1410424048%2FFunctions%2F-251573632" anchor-label="print" id="1410424048%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="print.html"><span><span>print</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-60186815%2FFunctions%2F-251573632"></span>
+                  <div><a href="../-base-string-notation/print.html"><span><span>print</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1410424048%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="print.html"><span class="token function">print</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">word<span class="token operator">: </span><a href="../-word/index.html">Word</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Transforms a <a href="../-word/index.html">Word</a> into a string that is formatted according to <code class="lang-kotlin">this</code> notation.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-base-string-notation/print.html"><span class="token function">print</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">word<span class="token operator">: </span><a href="../-word/index.html">Word</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Transforms a <a href="../-word/index.html">Word</a> into a string that is formatted according to <code class="lang-kotlin">this</code> notation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1747376887%2FFunctions%2F-251573632" anchor-label="toString" id="1747376887%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-base-string-notation/to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1747376887%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-base-string-notation/to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
