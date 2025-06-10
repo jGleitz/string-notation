@@ -63,7 +63,8 @@ data class NotationTestData(val word: Word, val string: String, var minimumJavaV
 
 infix fun Word.to(string: String) = NotationTestData(this, string)
 infix fun String.to(word: Word) = NotationTestData(word, this)
-infix fun NotationTestData.ifJvmVersionIsAtLeast(minimumJavaVersion: Int) = this.apply { this.minimumJavaVersion = minimumJavaVersion }
+infix fun NotationTestData.ifJvmVersionIsAtLeast(minimumJavaVersion: Int) =
+	this.apply { this.minimumJavaVersion = minimumJavaVersion }
 
 val currentJavaVersion by lazy {
 	System.getProperty("java.runtime.version")

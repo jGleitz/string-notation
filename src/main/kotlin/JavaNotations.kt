@@ -11,7 +11,7 @@ import javax.lang.model.SourceVersion
  * Allowed characters are determined using [Character.isJavaIdentifierStart] and [Character.isJavaIdentifierPart]. Keywords are detected
  * using [SourceVersion.isKeyword].
  */
-data object JavaTypeName : StringNotation by UpperCamelCase {
+object JavaTypeName: StringNotation by UpperCamelCase {
 	override fun print(word: Word) = UpperCamelCase.print(
 		Word(word.parts.mapIndexed { index, wordPart ->
 			if (index == 0) wordPart.keepOnlyJavaIdentifierChars()
@@ -28,7 +28,7 @@ data object JavaTypeName : StringNotation by UpperCamelCase {
  * Allowed characters are determined using [Character.isJavaIdentifierStart] and [Character.isJavaIdentifierPart]. Keywords are detected
  * using [SourceVersion.isKeyword].
  */
-object JavaMemberName : BaseStringNotation(camelCaseSplitRegex) {
+object JavaMemberName: BaseStringNotation(camelCaseSplitRegex) {
 	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
 	override fun print(word: Word) = word.parts
@@ -52,7 +52,7 @@ object JavaMemberName : BaseStringNotation(camelCaseSplitRegex) {
  * Allowed characters are determined using [Character.isJavaIdentifierStart] and [Character.isJavaIdentifierPart]. Keywords are detected
  * using [SourceVersion.isKeyword].
  */
-object JavaPackagePart : BaseStringNotation(Regex("_|${camelCaseSplitRegex.pattern}")) {
+object JavaPackagePart: BaseStringNotation(Regex("_|${camelCaseSplitRegex.pattern}")) {
 	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
 	override fun transformPartToPrint(index: Int, part: String) = part.lowercase(Locale.ROOT)
@@ -67,7 +67,7 @@ object JavaPackagePart : BaseStringNotation(Regex("_|${camelCaseSplitRegex.patte
  * Allowed characters are determined using [Character.isJavaIdentifierStart] and [Character.isJavaIdentifierPart]. Keywords are detected
  * using [SourceVersion.isKeyword].
  */
-object JavaPackageName : BaseStringNotation(Regex("\\.")) {
+object JavaPackageName: BaseStringNotation(Regex("\\.")) {
 	override fun transformPartToPrint(index: Int, part: String) = part.lowercase(Locale.ROOT).makeValidJavaIdentifier()
 
 	override fun printBeforeInnerPart(index: Int, part: String) = "."
@@ -80,7 +80,7 @@ object JavaPackageName : BaseStringNotation(Regex("\\.")) {
  * Allowed characters are determined using [Character.isJavaIdentifierStart] and [Character.isJavaIdentifierPart]. Keywords are detected
  * using [SourceVersion.isKeyword].
  */
-data object JavaConstantName : StringNotation by ScreamingSnakeCase {
+data object JavaConstantName: StringNotation by ScreamingSnakeCase {
 	override fun print(word: Word) = ScreamingSnakeCase.print(word).makeValidJavaIdentifier()
 }
 
