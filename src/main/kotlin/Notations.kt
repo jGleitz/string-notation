@@ -9,7 +9,7 @@ internal val camelCaseSplitRegex = Regex("(?<=.)(?=\\p{Lu})")
  *
  * @see JavaTypeName
  */
-object UpperCamelCase : BaseStringNotation(camelCaseSplitRegex) {
+object UpperCamelCase: BaseStringNotation(camelCaseSplitRegex) {
 	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
 	public override fun transformPartToPrint(index: Int, part: String) = part.firstUpperThenLowerCase()
@@ -20,7 +20,7 @@ object UpperCamelCase : BaseStringNotation(camelCaseSplitRegex) {
  *
  * @see JavaMemberName
  */
-object LowerCamelCase : BaseStringNotation(camelCaseSplitRegex) {
+object LowerCamelCase: BaseStringNotation(camelCaseSplitRegex) {
 	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
 	override fun transformPartToPrint(index: Int, part: String) =
@@ -30,7 +30,7 @@ object LowerCamelCase : BaseStringNotation(camelCaseSplitRegex) {
 /**
  * The `SCREAMING_SNAKE_CASE` notation.
  */
-object ScreamingSnakeCase : BaseStringNotation(Regex("_")) {
+object ScreamingSnakeCase: BaseStringNotation(Regex("(?<!^)_")) {
 	override fun transformPartAfterParse(index: Int, part: String) = part.lowercase(Locale.ROOT)
 
 	override fun printBeforeInnerPart(index: Int, part: String) = "_"
@@ -41,7 +41,7 @@ object ScreamingSnakeCase : BaseStringNotation(Regex("_")) {
 /**
  * The `snake_case` notation.
  */
-object SnakeCase: BaseStringNotation(Regex("_")) {
+object SnakeCase: BaseStringNotation(Regex("(?<!^)_")) {
 	override fun printBeforeInnerPart(index: Int, part: String) = "_"
 }
 

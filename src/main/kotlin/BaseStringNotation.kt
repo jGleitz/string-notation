@@ -12,7 +12,7 @@ abstract class BaseStringNotation(private val splitAt: Regex): StringNotation {
 	protected open fun transformPartAfterParse(index: Int, part: String) = part
 
 	override fun parse(sourceString: String): Word =
-		Word(sourceString.split(splitAt).asSequence().filter(String::isNotBlank).mapIndexed(::transformPartAfterParse))
+		Word(sourceString.split(splitAt).asSequence().mapIndexed(::transformPartAfterParse))
 
 	/**
 	 * Allows to transform a part before it is being printed. The default implementation does not modify the part in any way.

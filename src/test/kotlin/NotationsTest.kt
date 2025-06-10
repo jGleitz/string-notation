@@ -18,7 +18,10 @@ class LowerCamelCaseTest: BaseNotationTest(
 
 class ScreamingSnakeCaseTest: BaseNotationTest(
 	notation = ScreamingSnakeCase,
-	unchangedWords = listOf("IM_IN_SCREAMING_SNAKE_CASE" to Word("im", "in", "screaming", "snake", "case")),
+	unchangedWords = listOf(
+		"IM_IN_SCREAMING_SNAKE_CASE" to Word("im", "in", "screaming", "snake", "case"),
+		"_I_HAVE_A_PREFIX" to Word("_i", "have", "a", "prefix")
+	),
 	parseOnlyWords = listOf("im_iN_sNAKe_cASE_with_CAPItals" to Word("im", "in", "snake", "case", "with", "capitals")),
 	printOnlyWords = listOf(Word("im", "iN", "sNAKe", "cASE", "with", "CAPItals") to "IM_IN_SNAKE_CASE_WITH_CAPITALS")
 )
@@ -27,7 +30,8 @@ class SnakeCaseTest: BaseNotationTest(
 	notation = SnakeCase,
 	unchangedWords = listOf(
 		"im_in_snake_case" to Word("im", "in", "snake", "case"),
-		"im_iN_sNAKe_cASE_with_CAPItals" to Word("im", "iN", "sNAKe", "cASE", "with", "CAPItals")
+		"im_iN_sNAKe_cASE_with_CAPItals" to Word("im", "iN", "sNAKe", "cASE", "with", "CAPItals"),
+		"_i_have_a_prefix" to Word("_i", "have", "a", "prefix")
 	)
 )
 
