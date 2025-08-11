@@ -18,7 +18,7 @@ jobs:
         java-version: [ 8, 11, 17, 21, 23 ]
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Cache
         uses: actions/cache@v4
         with:
@@ -54,7 +54,7 @@ jobs:
     needs: build
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
