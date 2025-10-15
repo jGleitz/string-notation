@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
 	kotlin("jvm") version "2.1.21"
 	id("org.jetbrains.dokka-javadoc") version "2.0.0"
-	id("org.jetbrains.dokka") version "2.0.0"
+	id("org.jetbrains.dokka") version "2.1.0"
 	`maven-publish`
 	signing
 	id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
