@@ -3,7 +3,7 @@ import org.gradle.api.JavaVersion.VERSION_1_8
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-	kotlin("jvm") version "2.1.21"
+	kotlin("jvm") version "2.2.21"
 	id("org.jetbrains.dokka-javadoc") version "2.1.0"
 	id("org.jetbrains.dokka") version "2.1.0"
 	`maven-publish`
