@@ -1,5 +1,6 @@
-import io.github.gradlenexus.publishplugin.NexusRepository
 import org.gradle.kotlin.dsl.*
+import org.jreleaser.model.Active.ALWAYS
+
 
 plugins {
 	kotlin("jvm") version "2.2.21"
@@ -7,7 +8,7 @@ plugins {
 	id("org.jetbrains.dokka") version "2.1.0"
 	`maven-publish`
 	signing
-	id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
+	id("org.jreleaser") version "1.21.0"
 }
 
 group = "de.joshuagleitze"
@@ -52,8 +53,7 @@ tasks.withType<Test>().configureEach {
 	}
 }
 
-val ossrhUsername: String? by project
-val ossrhPassword: String? by project
+
 val githubRepository: String? by project
 val githubOwner = githubRepository?.split("/")?.get(0)
 val githubToken: String? by project
@@ -84,7 +84,7 @@ val dokkaJar by tasks.registering(Jar::class) {
 
 lateinit var publication: MavenPublication
 lateinit var githubPackages: ArtifactRepository
-lateinit var mavenCentral: NexusRepository
+lateinit var mavenCentralStaging: MavenArtifactRepository
 
 publishing {
 	publications {
@@ -128,6 +128,9 @@ publishing {
 		}
 	}
 	repositories {
+		mavenCentralStaging = maven(layout.buildDirectory.dir("publish/maven-central-staging")) {
+			name = "MavenCentralStaging"
+		}
 		githubPackages = maven("https://maven.pkg.github.com/$githubRepository") {
 			name = "GitHubPackages"
 			credentials {
@@ -138,31 +141,41 @@ publishing {
 	}
 }
 
-nexusPublishing {
-	repositories {
-		mavenCentral = sonatype {
-			username = ossrhUsername
-			password = ossrhPassword
+signing {
+	useInMemoryPgpKeys(
+		providers.gradleProperty("signingKey").orNull,
+		providers.gradleProperty("signingKeyPassword").orNull
+		)
+	sign(publication)
+}
+
+jreleaser {
+	deploy {
+		maven {
+			mavenCentral {
+				register("sonatype") {
+					url = "https://central.sonatype.com/api/v1/publisher"
+					active = ALWAYS
+					stagingRepository(mavenCentralStaging.url.toString())
+				}
+			}
 		}
 	}
 }
 
-signing {
-	val signingKey: String? by project
-	val signingKeyPassword: String? by project
-	useInMemoryPgpKeys(signingKey, signingKeyPassword)
-	sign(publication)
-}
+val jreleaserConfig by tasks
+val jreleaserDeploy by tasks
 
-val closeAndReleaseStagingRepositories by project.tasks
-closeAndReleaseStagingRepositories.mustRunAfter(mavenCentral.publishTask)
+jreleaserDeploy.mustRunAfter(jreleaserConfig)
+jreleaserDeploy.mustRunAfter(mavenCentralStaging.publishTask)
 
 val release by tasks.registering {
 	group = "release"
-	description = "Releases the project to Maven Central"
-	dependsOn(githubPackages.publishTask, mavenCentral.publishTask, closeAndReleaseStagingRepositories)
+	description = "Releases the project to all repositories"
+	dependsOn(jreleaserConfig, githubPackages.publishTask, mavenCentralStaging.publishTask, jreleaserDeploy)
 }
 
 fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.length) else this
 val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
-val NexusRepository.publishTask get() = "publishTo${this.name.replaceFirstChar { it.titlecase() }}"
+fun ProviderFactory.requiredGradleProperty(name: String): Provider<String> = gradleProperty(name)
+	.orElse(provider { throw InvalidUserDataException("required project property `$name` was not set!")})
