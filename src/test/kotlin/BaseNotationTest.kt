@@ -1,7 +1,7 @@
 package de.joshuagleitze.stringnotation
 
 import ch.tutteli.atrium.api.fluent.en_GB.feature
-import ch.tutteli.atrium.api.fluent.en_GB.toBe
+import ch.tutteli.atrium.api.fluent.en_GB.toEqual
 import ch.tutteli.atrium.api.verbs.expect
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import org.junit.jupiter.api.TestInstance
@@ -22,7 +22,7 @@ abstract class BaseNotationTest(
 	fun `parses words correctly`(minimumJavaVersion: Int, input: String, expectedWord: Word) {
 		assumeTrue(currentJavaVersion >= minimumJavaVersion, "Requires at least Java $minimumJavaVersion")
 		expect(input.fromNotation(notation)) {
-			feature(Word::partsList).toBe(expectedWord.partsList)
+			feature(Word::partsList).toEqual(expectedWord.partsList)
 		}
 	}
 
@@ -31,7 +31,7 @@ abstract class BaseNotationTest(
 	fun `prints words correctly`(minimumJavaVersion: Int, expectedResult: String, sourceWord: Word) {
 		assumeTrue(currentJavaVersion >= minimumJavaVersion, "Requires at least Java $minimumJavaVersion")
 		expect(sourceWord) {
-			feature(Word::toNotation, notation).toBe(expectedResult)
+			feature(Word::toNotation, notation).toEqual(expectedResult)
 		}
 	}
 
@@ -41,7 +41,7 @@ abstract class BaseNotationTest(
 		assumeTrue(currentJavaVersion >= minimumJavaVersion, "Requires at least Java $minimumJavaVersion")
 		expect(word) {
 			feature(String::fromNotation, notation) {
-				feature(Word::toNotation, notation).toBe(word)
+				feature(Word::toNotation, notation).toEqual(word)
 			}
 		}
 	}
