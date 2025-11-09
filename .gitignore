@@ -4,3 +4,6 @@ build/
 
 ### IntelliJ
 /.idea/
+
+### Kotlin
+/.kotlin/
