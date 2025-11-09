@@ -7,7 +7,6 @@ on:
 env:
   ORG_GRADLE_PROJECT_version: ${{ github.event.release.tag_name }}
   ORG_GRADLE_PROJECT_githubRepository: ${{ github.repository }}
-  GRADLE_OPTS: -Dorg.gradle.configuration-cache=false
 
 jobs:
   release:
@@ -30,11 +29,12 @@ jobs:
       - name: Release Artefacts
         run: ./gradlew release
         env:
+          GRADLE_OPTS: -Dorg.gradle.configuration-cache=false
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PACKAGE_SIGNING_KEY }}
           ORG_GRADLE_PROJECT_signingKeyPassword: ${{ secrets.PACKAGE_SIGNING_KEY_PASSWORD }}
           ORG_GRADLE_PROJECT_githubToken: ${{ secrets.GITHUB_TOKEN }}
-          ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
-          ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
+          JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          JRELEASER_MAVENCENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
 
   docs:
     name: Publish Documentation
