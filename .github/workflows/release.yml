@@ -16,21 +16,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/wrapper
-            ~/.gradle/caches
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.*') }}
-          restore-keys: |
-            gradle-${{ runner.os }}
-            gradle-
-      - name: Set up JDK 21
+      - name: Setup JDK
         uses: actions/setup-java@v5
         with:
-          java-version: 21
+          java-version-file: .tool-versions
           distribution: temurin
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
       - name: Prepare
         run: ./gradlew clean dependencies
       - name: Assemble Artefacts
@@ -50,21 +42,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/wrapper
-            ~/.gradle/caches
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.*') }}
-          restore-keys: |
-            gradle-${{ runner.os }}
-            gradle-
-      - name: Set up JDK 21
+      - name: Setup JDK
         uses: actions/setup-java@v5
         with:
-          java-version: 21
+          java-version-file: .tool-versions
           distribution: temurin
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
       - name: Prepare
         run: ./gradlew clean dependencies
       - name: Generate Documentation

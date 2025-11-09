@@ -1,6 +1,5 @@
 import io.github.gradlenexus.publishplugin.NexusRepository
-import org.gradle.api.JavaVersion.VERSION_1_8
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.gradle.kotlin.dsl.*
 
 plugins {
 	kotlin("jvm") version "2.1.21"
@@ -20,31 +19,36 @@ repositories {
 }
 
 dependencies {
-	testImplementation(name = "atrium-cc-en_GB-robstoll", group = "ch.tutteli.atrium", version = "0.15.0")
-	testImplementation(name = "junit-jupiter-api", group = "org.junit.jupiter", version = "5.7.2")
-	testImplementation(name = "junit-jupiter-params", group = "org.junit.jupiter", version = "5.7.2")
+	testImplementation("ch.tutteli.atrium:atrium-cc-en_GB-robstoll:0.15.0")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.2")
 
 	constraints {
 		testImplementation(kotlin("reflect", KotlinVersion.CURRENT.toString()))
 	}
 
-	testRuntimeOnly(name = "junit-platform-launcher", group = "org.junit.platform", version = "1.12.1")
-	testRuntimeOnly(name = "junit-jupiter-engine", group = "org.junit.jupiter", version = "5.7.2")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.12.1")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 }
+
+val compilationTargetJavaVersion = JavaLanguageVersion.of(8)
+
+java {
+	toolchain {
+		languageVersion = compilationTargetJavaVersion
+	}
+}
+
+val testTargetJavaVersion = providers
+	.gradleProperty("testTargetJavaVersion")
+	.map(JavaLanguageVersion::of)
+	.orElse(compilationTargetJavaVersion)
 
 tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
 	reports.junitXml.required = true
-}
-
-java {
-	sourceCompatibility = VERSION_1_8
-	targetCompatibility = VERSION_1_8
-}
-
-kotlin {
-	compilerOptions {
-		jvmTarget = JvmTarget.JVM_1_8
+	javaLauncher = javaToolchains.launcherFor {
+		languageVersion = testTargetJavaVersion
 	}
 }
 
@@ -76,11 +80,6 @@ val dokkaJar by tasks.registering(Jar::class) {
 	description = "Assembles the Kotlin docs with Dokka"
 	archiveClassifier.set("javadoc")
 	from(tasks.named("dokkaGeneratePublicationJavadoc"))
-}
-
-artifacts {
-	archives(sourcesJar)
-	archives(dokkaJar)
 }
 
 lateinit var publication: MavenPublication
