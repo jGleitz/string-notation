@@ -20,15 +20,15 @@ repositories {
 
 dependencies {
 	testImplementation("ch.tutteli.atrium:atrium-cc-en_GB-robstoll:0.15.0")
-	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
-	testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.14.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-params:5.14.1")
 
 	constraints {
 		testImplementation(kotlin("reflect", KotlinVersion.CURRENT.toString()))
 	}
 
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.12.1")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.14.1")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.14.1")
 }
 
 val compilationTargetJavaVersion = JavaLanguageVersion.of(8)
