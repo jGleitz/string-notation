@@ -1,4 +1,4 @@
-# string-notation [![CI Status](https://github.com/jGleitz/string-notation/workflows/CI/badge.svg)](https://github.com/jGleitz/string-notation/actions) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.joshuagleitze/string-notation/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.joshuagleitze/string-notation)
+# string-notation  [![CI](https://github.com/jGleitz/string-notation/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jGleitz/string-notation/actions/workflows/ci.yml?query=branch%3Amain) [![Maven Central Version](https://img.shields.io/maven-central/v/de.joshuagleitze/string-notation?logo=sonatype&label=maven%20central)](https://central.sonatype.com/artifact/de.joshuagleitze/string-notation)
 _Convert between different string notations commonly found in programming._
 Useful, for example, to build identifiers when generating code.
 Also includes notations to build valid Java type or member names. 
