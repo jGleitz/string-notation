@@ -31,7 +31,7 @@ dependencies {
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.0.1")
 }
 
-val compilationTargetJavaVersion = JavaLanguageVersion.of(11)
+val compilationTargetJavaVersion = JavaLanguageVersion.of(17)
 
 java {
 	toolchain {
