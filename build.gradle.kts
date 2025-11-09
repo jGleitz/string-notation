@@ -1,4 +1,5 @@
 import org.gradle.kotlin.dsl.*
+import kotlin.io.path.*
 import org.jreleaser.model.Active.ALWAYS
 
 
@@ -145,37 +146,29 @@ signing {
 	useInMemoryPgpKeys(
 		providers.gradleProperty("signingKey").orNull,
 		providers.gradleProperty("signingKeyPassword").orNull
-		)
+	)
 	sign(publication)
 }
 
 jreleaser {
-	deploy {
-		maven {
-			mavenCentral {
-				register("sonatype") {
-					url = "https://central.sonatype.com/api/v1/publisher"
-					active = ALWAYS
-					stagingRepository(mavenCentralStaging.url.toString())
-				}
-			}
-		}
+	deploy.maven.mavenCentral.register("mavenCentral") {
+		url = "https://central.sonatype.com/api/v1/publisher"
+		active = ALWAYS
+		stagingRepository(mavenCentralStaging.url.toPath().absolutePathString())
+		sign = false
 	}
 }
 
-val jreleaserConfig by tasks
 val jreleaserDeploy by tasks
-
-jreleaserDeploy.mustRunAfter(jreleaserConfig)
 jreleaserDeploy.mustRunAfter(mavenCentralStaging.publishTask)
 
 val release by tasks.registering {
 	group = "release"
 	description = "Releases the project to all repositories"
-	dependsOn(jreleaserConfig, githubPackages.publishTask, mavenCentralStaging.publishTask, jreleaserDeploy)
+	dependsOn(githubPackages.publishTask, mavenCentralStaging.publishTask, jreleaserDeploy)
 }
 
 fun String.drop(prefix: String) = if (this.startsWith(prefix)) this.drop(prefix.length) else this
 val ArtifactRepository.publishTask get() = tasks["publishAllPublicationsTo${this.name}Repository"]
 fun ProviderFactory.requiredGradleProperty(name: String): Provider<String> = gradleProperty(name)
-	.orElse(provider { throw InvalidUserDataException("required project property `$name` was not set!")})
+	.orElse(provider { throw InvalidUserDataException("required project property `$name` was not set!") })
