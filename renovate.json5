@@ -10,4 +10,18 @@
   */
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["github>jGleitz/renovate-config:default.json5"],
+  packageRules: [
+    // renovate doesn’t extract Gradle configurations, and, thus, doesn’t apply the
+    // fix / chore distinction correctly. See https://github.com/renovatebot/renovate/discussions/27777
+    // We set the commit type to ‘chore’ for all dependencies to avoid wrong ‘fix’ PRs. Then we
+    // hand-select the production dependencies that should actually bump the package version.
+    {
+      matchPackageNames: ["/.*/"],
+      semanticCommitType: "chore"
+    },
+    {
+      matchPackageNames: "org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin",
+      semanticCommitType: "fix"
+    }
+  ]
 }
