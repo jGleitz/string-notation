@@ -7,7 +7,6 @@ on:
 
 env:
   ORG_GRADLE_PROJECT_version: ${{ github.sha }}
-
 jobs:
 
   build:
@@ -15,38 +14,30 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java-version: [ 8, 11, 17, 21, 23 ]
+        java-version: [ 8, 11, 17, 21, 25 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/wrapper
-            ~/.gradle/caches
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle.*') }}
-          restore-keys: |
-            gradle-${{ runner.os }}
-            gradle-
-      - name: Set up JDK ${{ matrix.java-version }}
+      - name: Set up JDK
         uses: actions/setup-java@v5
         with:
-          java-version: ${{ matrix.java-version }}
+          java-version-file: .tool-versions
           distribution: temurin
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
       - name: Prepare
         run: ./gradlew clean dependencies
       - name: Build
         run: ./gradlew assemble testClasses
       - name: Test
-        run: ./gradlew test
+        run: ./gradlew test -PtestTargetJavaVersion=${{ matrix.java-version }}
       - name: Publish Test Report
         uses: scacap/action-surefire-report@v1
         if: failure()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report_paths: '**/build/test-results/test/TEST-*.xml'
-          check_name: Test Failures (${{ matrix.java-version }})
+          check_name: Test Failures (Java ${{ matrix.java-version }})
 
   release:
     name: Release Check
