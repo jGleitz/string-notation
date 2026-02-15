@@ -22,15 +22,15 @@ repositories {
 
 dependencies {
 	testImplementation("ch.tutteli.atrium:atrium-fluent:1.2.0")
-	testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.2")
-	testImplementation("org.junit.jupiter:junit-jupiter-params:6.0.2")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:6.0.3")
+	testImplementation("org.junit.jupiter:junit-jupiter-params:6.0.3")
 
 	constraints {
 		testImplementation(kotlin("reflect", KotlinVersion.CURRENT.toString()))
 	}
 
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.0.2")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.0.2")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher:6.0.3")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.0.3")
 }
 
 val compilationTargetJavaVersion = JavaLanguageVersion.of(17)
