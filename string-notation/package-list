@@ -28,9 +28,9 @@ $dokka.location:de.joshuagleitze.stringnotation/UpperCamelCase///PointingToDecla
 $dokka.location:de.joshuagleitze.stringnotation/UpperCamelCase/transformPartToPrint/#kotlin.Int#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-upper-camel-case/transform-part-to-print.html
 $dokka.location:de.joshuagleitze.stringnotation/WindowsPath///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-windows-path/index.html
 $dokka.location:de.joshuagleitze.stringnotation/Word///PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/index.html
-$dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.collections.List[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/Word/#kotlin.sequences.Sequence[kotlin.String]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/Word/#vararg(kotlin.String)/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/-word.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/equals/#kotlin.Any?/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/equals.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/flatMapParts/#kotlin.Function1[kotlin.String,kotlin.sequences.Sequence[kotlin.String]]/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/flat-map-parts.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/hashCode/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/hash-code.html
@@ -40,6 +40,7 @@ $dokka.location:de.joshuagleitze.stringnotation/Word/partsFromNotation/#de.joshu
 $dokka.location:de.joshuagleitze.stringnotation/Word/partsList/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/parts-list.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/plus/#de.joshuagleitze.stringnotation.Word/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/plus.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/plus/#kotlin.String/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/plus.html
+$dokka.location:de.joshuagleitze.stringnotation/Word/plus/#vararg(kotlin.String)/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/plus.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/toNotation/#de.joshuagleitze.stringnotation.StringNotation/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/to-notation.html
 $dokka.location:de.joshuagleitze.stringnotation/Word/toString/#/PointingToDeclaration/string-notation/de.joshuagleitze.stringnotation/-word/to-string.html
 de.joshuagleitze.stringnotation
