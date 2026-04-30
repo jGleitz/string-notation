@@ -9,7 +9,7 @@ plugins {
 	id("org.jetbrains.dokka") version "2.2.0"
 	`maven-publish`
 	signing
-	id("org.jreleaser") version "1.23.0"
+	id("org.jreleaser") version "1.24.0"
 }
 
 group = "de.joshuagleitze"
