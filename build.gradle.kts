@@ -54,6 +54,7 @@ tasks.withType<Test>().configureEach {
 	}
 }
 
+val assemble = tasks.named("assemble")
 
 val githubRepository: String? by project
 val githubOwner = githubRepository?.split("/")?.get(0)
@@ -65,6 +66,7 @@ val sourcesJar by tasks.registering(Jar::class) {
 	archiveClassifier = "sources"
 	from(sourceSets.main.map { it.allSource })
 }
+assemble { dependsOn(sourcesJar) }
 
 dokka {
 	dokkaSourceSets.main {
@@ -82,6 +84,7 @@ val dokkaJar by tasks.registering(Jar::class) {
 	archiveClassifier.set("javadoc")
 	from(tasks.named("dokkaGeneratePublicationJavadoc"))
 }
+assemble { dependsOn(dokkaJar) }
 
 lateinit var publication: MavenPublication
 lateinit var githubPackages: ArtifactRepository
