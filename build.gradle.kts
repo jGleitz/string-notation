@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-	testImplementation("ch.tutteli.atrium:atrium-fluent:1.2.0")
+	testImplementation("ch.tutteli.atrium:atrium-fluent:1.3.0")
 	testImplementation("org.junit.jupiter:junit-jupiter-api:6.1.3")
 	testImplementation("org.junit.jupiter:junit-jupiter-params:6.1.3")
 
